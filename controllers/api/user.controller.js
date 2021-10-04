@@ -42,7 +42,7 @@ router.get('/users/:id', auth.isLoggedIn, async (req, res) => {
         });
 })
 
-router.post('/users', auth.isLoggedIn, async (req, res) => {
+router.post('/users', async (req, res) => {
 
     // Validar el request (si no es vacio)
     if (!req.body.username || !req.body.password || !req.body.email) {

@@ -1,5 +1,5 @@
 {
-  "name": "usuarios",
+  "name": "special-parakeet",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -23,6 +23,7 @@
     "fs": "^0.0.1-security",
     "geoip-lite": "^1.4.2",
     "https": "^1.0.0",
+    "mysql2": "^2.3.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
@@ -35,7 +36,7 @@
   },
   "devDependencies": {
     "node-sass": "^6.0.1",
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.13"
   },
   "optionalDependencies": {
     "fsevents": "^2.3.2"

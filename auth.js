@@ -4,15 +4,15 @@ const bcrypt = require('bcrypt')
 const db = require('./models')
 const User = db.User
 
-passport.use(new passportLocal(async function(username, password, done) {
-    
+passport.use(new passportLocal(async function (username, password, done) {
+
     const userLogged = await User.findOne({ where: { username: username } })
-        
+
     await bcrypt.compare(password, userLogged.dataValues.password)
-        .then(function(err, result) {
+        .then(function (err, result) {
             return done(null, userLogged.dataValues)
         })
-        .catch(err => {            
+        .catch(err => {
             done(null, false)
         })
 }))
@@ -30,5 +30,5 @@ passport.deserializeUser(async (user, done) => {
 module.exports = {
     isLoggedIn: function isLoggedIn(req, res, next) {
         return req.user ? next() : res.redirect('/login')
-    }    
+    }
 }
