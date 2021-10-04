@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+</head>
+
+<body>
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <section>
+
+        <div class="container is-fluid">
+            <div>
+                <h1 class="title is-2 my-4">
+                    <%= title %>
+                </h1>
+            </div>
+
+            <progress id="bar" class="progress is-small is-primary" max="100">20%</progress>
+
+            <div id="content"></div>
+        </div>
+    </section>
+    <script src="../../public/js/sessions/index.js"></script>
+</body>
+
+</html>
