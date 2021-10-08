@@ -79,13 +79,20 @@ router.post('/users', async (req, res) => {
     const user = await User.create(newUser)
 
     if (user != null) {
-        roles.forEach(role => {
-            user.addRole(role)
-        })
+        if (roles) {
+            roles.forEach(role => {
+                user.addRole(role)
+            })
 
-        const userWithRoles = await User.findByPk(user.id, {
-            include: "roles"
-        })
+            const userWithRoles = await User.findByPk(user.id, {
+                include: "roles"
+            })
+        } else {
+            res.status(200).send({
+                message:
+                    err.message || "User created with no roles."
+            });
+        }
 
         res.send(userWithRoles);
     } else {
