@@ -79,7 +79,7 @@ router.post('/users', async (req, res) => {
     const user = await User.create(newUser)
 
     if (user != null) {
-        if (roles) {
+        if (roles != null) {
             roles.forEach(role => {
                 user.addRole(role)
             })
