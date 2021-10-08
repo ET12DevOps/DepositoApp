@@ -52,13 +52,6 @@ router.post('/users', async (req, res) => {
         return;
     }
 
-    const roles = await Role.findAll({
-        where: {
-            id: {
-                [Op.or]: req.body.roles
-            }
-        }
-    })
 
     // Crear un usuario
     const newUser = {
@@ -79,7 +72,15 @@ router.post('/users', async (req, res) => {
     const user = await User.create(newUser)
 
     if (user != null) {
-        if (roles != null) {
+        if (req.body.roles != null) {
+            const roles = await Role.findAll({
+                where: {
+                    id: {
+                        [Op.or]: req.body.roles
+                    }
+                }
+            })
+
             roles.forEach(role => {
                 user.addRole(role)
             })
