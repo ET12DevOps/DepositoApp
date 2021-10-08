@@ -87,13 +87,13 @@ router.post('/users', async (req, res) => {
             const userWithRoles = await User.findByPk(user.id, {
                 include: "roles"
             })
+            res.send(userWithRoles);
+
         } else {
             res.status(200).send({
                 message: "User created with no roles."
             });
         }
-
-        res.send(userWithRoles);
     } else {
         res.status(500).send({
             message:
