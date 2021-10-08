@@ -89,8 +89,7 @@ router.post('/users', async (req, res) => {
             })
         } else {
             res.status(200).send({
-                message:
-                    err.message || "User created with no roles."
+                message: "User created with no roles."
             });
         }
 
