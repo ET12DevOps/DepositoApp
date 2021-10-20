@@ -2,25 +2,23 @@ const url = window.location.protocol + "//" + window.location.host + "/";
 
 const id = document.getElementById('roleId')
 const name = document.getElementById('name')
-const enabled = document.getElementById('enabled')
-const saveRole = document.getElementById('save-role')
+const motivo = document.getElementById('motivo')
+const saveMotivo = document.getElementById('save-motivo')
 
-saveRole.addEventListener('click', postData)
+saveMotivo.addEventListener('click', postData)
 
 function postData() {
     var data = {
         id: '',
         name: name.value,
-        enabled: enabled.checked,
+        motivo: motivo.value,
         createdAt: '',
         createdBy: '',
-        updatedAt: '',
-        updatedBy: ''
     }
     
     console.log(data)
 
-    fetch(url + 'api/roles/', {
+    fetch(url + 'api/motivos/', {
         method: 'POST', 
         body: JSON.stringify(data),
         headers:{

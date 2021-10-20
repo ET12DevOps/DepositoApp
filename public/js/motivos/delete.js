@@ -3,7 +3,7 @@ saveRole.addEventListener('click', deleteData)
 function deleteData(){
     console.log(id.value)
 
-    fetch(url + 'api/roles/' + id.value, {
+    fetch(url + 'api/motivos/' + id.value, {
         method: 'DELETE',
         headers:{
             'Content-Type': 'application/json'

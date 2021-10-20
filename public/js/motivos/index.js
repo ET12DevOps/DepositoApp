@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const getData = async () => {
     try {
-        const response = await fetch(url + 'api/roles')
+        const response = await fetch(url + 'api/motivos')
 
         const userData = await response.json()
 
@@ -14,11 +14,11 @@ const getData = async () => {
 
         progresBar.style.display = "none"
 
-        const datatable = new simpleDatatables.DataTable("#roles_datatable", {
+        const datatable = new simpleDatatables.DataTable("#motivos_datatable", {
             searchable: true,
             paging: true,
             data: {
-                headings: ['NOMBRE', 'ESTADO', 'CREACION', 'ACTUALIZACION', 'ACCIONES'],
+                headings: ['NOMBRE', 'MOTIVO', 'FECHA', 'ACCIONES'],
                 data: userData.map((x) => {
                     var res = Object.values(x)
                     res.shift()
@@ -48,9 +48,9 @@ const getData = async () => {
                 },
                 {
                     select: 4, sortable: false, render: function (data, cell, row) {
-                        var editButton = `<a href="/roles/${userData[row.dataIndex].id}/edit" id="edit-${userData[row.dataIndex].id}" class="mr-2 has-text-info"><i class="fad fa-pencil"></i></a>`
+                        var editButton = `<a href="/motivos/${userData[row.dataIndex].id}/edit" id="edit-${userData[row.dataIndex].id}" class="mr-2 has-text-info"><i class="fad fa-pencil"></i></a>`
 
-                        var deleteButton = `<a href="/roles/${userData[row.dataIndex].id}/delete" id="delete-${userData[row.dataIndex].id}" class="has-text-danger"><i class="fad fa-trash-alt"></i></a>`
+                        var deleteButton = `<a href="/motivos/${userData[row.dataIndex].id}/delete" id="delete-${userData[row.dataIndex].id}" class="has-text-danger"><i class="fad fa-trash-alt"></i></a>`
 
                         return '<div class="has-text-centered"> ' + editButton + deleteButton + '</div>';
                     }

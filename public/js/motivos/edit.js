@@ -1,41 +1,39 @@
 const url = window.location.protocol + "//" + window.location.host + "/";
 
-const id = document.getElementById('roleId')
+const id = document.getElementById('motivoId')
 const name = document.getElementById('name')
-const enabled = document.getElementById('enabled')
+const motivo = document.getElementById('motivo')
 const createdAt = document.getElementById('createdAt')
-const updatedAt = document.getElementById('updatedAt')
 
 const getData = async() => {
-    const res = await fetch(url + 'api/roles/' + id.value)
+    const res = await fetch(url + 'api/motivos/' + id.value)
     const data = await res.json()
     
     name.value = data.name
-    enabled.checked = data.enabled 
+    motivo.checked = data.enabled 
     createdAt.value = new Date(data.createdAt).toLocaleString('es-AR')
-    updatedAt.value =  new Date(data.updatedAt).toLocaleString('es-AR')
 }
 
 document.addEventListener("DOMContentLoaded", function(){
     getData()
 });
 
-const saveRole = document.getElementById('save-role')
+const saveMotivo = document.getElementById('save-motivo')
 
-saveRole.addEventListener('click', putData)
+saveMotivo.addEventListener('click', putData)
 
 function putData() {
     var data = {
         id: id.value,
         name: name.value,
-        enabled: enabled.checked,
+        motivo: motivo.checked,
         updatedAt: '',
         updatedBy: ''
     }
     
     console.log(data)
 
-    fetch(url + 'api/roles/' + id.value, {
+    fetch(url + 'api/motivos/' + id.value, {
         method: 'PUT', 
         body: JSON.stringify(data),
         headers:{
