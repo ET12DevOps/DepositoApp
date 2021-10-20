@@ -9,7 +9,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     numPrestamo: {
       type: DataTypes.INTEGER,
-      primaryKey: true,
       allowNull: false
     },
     devuelto: {
@@ -18,6 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     detalle: {
       type: DataTypes.STRING
     }
+  }, {
+    freezeTableName: true
   });
 
   return PrestamoConsumible;

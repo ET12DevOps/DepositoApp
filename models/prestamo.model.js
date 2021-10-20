@@ -17,6 +17,8 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       allowNull: false
     }
+  }, {
+    freezeTableName: true
   });
 
   return Prestamo;

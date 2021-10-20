@@ -9,12 +9,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     codigo: {
       type: DataTypes.STRING,
-      primaryKey: true,
       allowNull: false
     },
     descripcion: {
       type: DataTypes.STRING
     }
+  }, {
+    freezeTableName: true
   });
 
   return Motivo;

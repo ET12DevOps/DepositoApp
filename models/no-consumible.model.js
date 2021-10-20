@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING
     },
     idUnidad: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       primaryKey: true,
       allowNull: false
     },
@@ -28,6 +28,8 @@ module.exports = (sequelize, DataTypes) => {
     existenciaActual: {
       type: DataTypes.INTEGER
     }
+  }, {
+    freezeTableName: true
   });
 
   return NoConsumible;
