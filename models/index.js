@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
+
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.js')[env];
 
@@ -38,6 +39,7 @@ db.User = require("./user.model.js")(sequelize, Sequelize);
 db.Role = require("./role.model.js")(sequelize, Sequelize);
 db.Login = require("./login.model.js")(sequelize, Sequelize);
 db.UserRole = require("./userRole.model.js")(sequelize, Sequelize);
+
 db.Consumible = require("./consumible.model")(sequelize, Sequelize);
 db.DevolucionConsumible = require("./devolucion-consumible.model")(sequelize, Sequelize);
 db.DevolucionNoConsumible = require("./devolucion-no-consumible.model")(sequelize, Sequelize);
@@ -111,6 +113,7 @@ db.DevolucionNoConsumible.hasMany(db.PrestamoNoConsumible, {
   foreignKey: "numPrestamo"
 });
 
+
 db.Login.belongsTo(db.User, {
   foreignKey: "userId"
 })
@@ -127,4 +130,6 @@ db.Role.belongsToMany(db.User, {
   foreignKey: "roleId"
 })
 
+
 module.exports = db;
+
