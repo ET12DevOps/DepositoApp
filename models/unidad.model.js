@@ -10,6 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     nombre: {
       type: DataTypes.STRING
     }
+  }, {
+    freezeTableName: true
   });
 
   return Unidad;
