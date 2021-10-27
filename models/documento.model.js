@@ -9,7 +9,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     codigo: {
       type: DataTypes.STRING,
-      primaryKey: true,
       allowNull: false
     },
     numero: {
@@ -18,6 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     descripcion: {
       type: DataTypes.STRING
     }
+  }, {
+    freezeTableName: true
   });
 
   return Documento;
