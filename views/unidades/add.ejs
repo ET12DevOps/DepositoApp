@@ -13,7 +13,7 @@
 
     <section>
 
-        <div class="container is-fluid">
+          <div class="container is-fluid">
             <div>
                 <h1 class="title is-2 mt-4">
                     <%= title %>
@@ -21,63 +21,25 @@
             </div>
 
             <div class="my-4">
-                <div class="field">
-                    <label class="label">MATERIAL</label>
-                    <div class="control">
-                        <input class="input" type="text" name="username" id="username">
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">CANTIDAD</label>
-                    <div class="control">
-                        <input class="input" type="password" name="password" id="password">
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">CM</label>
-                    <div class="control">
-                        <input class="input" type="password" name="password" id="password">
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">M</label>
-                    <div class="control">
-                        <input class="input" type="password" name="password" id="password">
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">CM2</label>
-                    <div class="control">
-                        <input class="input" type="text" name="email" id="email">
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">LTRS</label>
-                    <div class="control">
-                        <input class="input" type="text" name="firstName" id="firstName">
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">DIAMETRO</label>
-                    <div class="control">
-                        <input class="input" type="text" name="lastName" id="lastName">
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">MAQUINA</label>
-                    <div class="control">
-                        <input class="input" type="text" name="lastName" id="lastName">
-                    </div>
-                </div>
-                <div class="my-4">
-                    <button id="save-user" type="submit" class="button is-outlined is-primary">Guardar</button>
-                    <a class="button is-outlined" href="/users">Cancelar</a>
-                </div>
+              <!-- <div class="select">
+                <select>
+                  <option>Seleccione una unidad</option>
+                  <option>Centimetros</option>
+                  <option>Metros</option>
+                  <option>Metros cuadrados</option>
+                  <option>Litros</option>
+                </select>
+              </div> -->
             </div>
 
-        </div>
+            <div class="my-4">
+              <div class="field is-small">
+                <label class="label">Nueva unidad</label>
+                <input id="cantidad" type="text" class="input">
+              </div>
+            </div>
+          </div>
     </section>
-    <script src="../public/js/users/add.js"></script>
+    <script src="../public/js/unidades/add.js"></script>
 </body>
-
 </html>
