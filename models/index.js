@@ -82,37 +82,44 @@ db.Unidad.hasMany(db.NoConsumible,{
 }); 
 
 db.Consumible.belongsToMany(db.Prestamo, {
-  through: "PrestamoConsumible",
-  as: "ConsumiblePrestamo",
+  through: "prestamoConsumible",
+  as: "PrestamosConsumible",
   foreignKey: "idConsumible"
 });
 
 db.Prestamo.belongsToMany(db.Consumible, {
-  through: "PrestamoConsumible",
-  as: "ConsumiblePrestamo",
-  foreignKey: "numPrestamo"
-});
-
-db.DevolucionConsumible.hasMany(db.PrestamoConsumible, {
+  through: "prestamoConsumible",
+  as: "ConsumiblesPrestamo",
   foreignKey: "numPrestamo"
 });
 
 db.NoConsumible.belongsToMany(db.Prestamo, {
-  through: "PrestamoNoConsumible",
-  as: "NoConsumiblePrestamo",
+  through: "prestamoNoConsumible",
+  as: "NoConsumiblesPrestamo",
   foreignKey: "idNoConsumible"
 }); 
 
-db.Prestamo.belongsToMany(db.Prestamo, {
-  through: "PrestamoNoConsumible",
-  as: "NoConsumiblePrestamo",
+db.Prestamo.belongsToMany(db.NoConsumible, {
+  through: "prestamoNoConsumible",
+  as: "NoConsumiblePrestamos",
   foreignKey: "numPrestamo"
 });
 
-db.DevolucionNoConsumible.hasMany(db.PrestamoNoConsumible, {
+db.PrestamoConsumible.hasMany(db.DevolucionConsumible, {
   foreignKey: "numPrestamo"
 });
 
+db.PrestamoNoConsumible.hasMany(db.DevolucionNoConsumible, {
+  foreignKey: "numPrestamo"
+});
+
+db.PrestamoConsumible.hasMany(db.DevolucionConsumible, {
+  foreignKey: "idConsumible"
+});
+
+db.PrestamoNoConsumible.hasMany(db.DevolucionNoConsumible, {
+  foreignKey: "idNoConsumible"
+});
 
 db.Login.belongsTo(db.User, {
   foreignKey: "userId"
