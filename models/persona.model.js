@@ -22,6 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     estado: {
       type: DataTypes.STRING
     }
+  }, {
+    freezeTableName: true
   });
 
   return Persona;
