@@ -88,7 +88,7 @@ app.use('/', require('./controllers/dashboard.controller'))
 app.use('/', require('./controllers/account.controller'))
 app.use('/', require('./controllers/session.controller'))
 app.use('/', require('./controllers/motivo.controller'))
-
+app.use('/', require('./controllers/documento.controller'))
 //declaracion api controllers
 app.use('/api', require('./controllers/api/user.controller'))
 app.use('/api', require('./controllers/api/role.controller'))
