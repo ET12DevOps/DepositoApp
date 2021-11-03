@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+</head>
+
+<body>
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <section>
+
+          <div class="container is-fluid">
+            <div>
+                <h1 class="title is-2 mt-4">
+                    <%= title %>
+                </h1>
+            </div>
+
+            <div class="my-4">
+              <!-- <div class="select">
+                <select>
+                  <option>Seleccione una unidad</option>
+                  <option>Centimetros</option>
+                  <option>Metros</option>
+                  <option>Metros cuadrados</option>
+                  <option>Litros</option>
+                </select>
+              </div> -->
+            </div>
+
+            <div class="my-4">
+              <div class="field is-small">
+                <label class="label">Nueva unidad</label>
+                <input id="cantidad" type="text" class="input">
+              </div>
+            </div>
+
+            <div id="roles" class=""></div>
+            <div class="my-4">
+                <button id="save-user" type="submit" class="button is-outlined is-primary">Guardar</button>
+                <a class="button is-outlined" href="/unidades">Cancelar</a>
+            </div>
+          </div>
+    </section>
+    <script src="../public/js/unidades/add.js"></script>
+</body>
+</html>

@@ -7,10 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       allowNull: false
     },
-    idNoConsumible: {
-      type: DataTypes.INTEGER,
-    },
-    numPrestamo: {
+    idPrestamoNoConsumible: {
       type: DataTypes.INTEGER,
     },
     fecha: {

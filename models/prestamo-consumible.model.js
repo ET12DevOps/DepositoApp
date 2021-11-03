@@ -2,15 +2,16 @@
 
 module.exports = (sequelize, DataTypes) => {
   const PrestamoConsumible = sequelize.define('prestamoConsumible', {
+    idPrestamoConsumible: {
+      type: DataTypes.INTEGER,
+      primaryKey:true,
+      allowNull:false
+    },    
     idConsumible: {
       type: DataTypes.INTEGER,
-      primaryKey: true,
-      allowNull: false
     },
     numPrestamo: {
       type: DataTypes.INTEGER,
-      primaryKey: true,
-      allowNull: false
     },
     devuelto: {
       type: DataTypes.BOOLEAN
