@@ -9,10 +9,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     numPrestamo: {
       type: DataTypes.INTEGER,
+      primaryKey: true,
       allowNull: false
     },
     devuelto: {
-      type: DataTypes.STRING
+      type: DataTypes.BOOLEAN
     },
     detalle: {
       type: DataTypes.STRING
