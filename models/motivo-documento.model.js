@@ -3,15 +3,17 @@
 module.exports = (sequelize, DataTypes) => {
   const MotivoDocumento = sequelize.define('motivoDocumento', {
     idMotivo: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER, 
       primaryKey: true,
       allowNull: false
     },
     idDocumento: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       primaryKey: true,
       allowNull: false
     }
+  }, {
+    freezeTableName: true
   });
 
   return MotivoDocumento;

@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  const Motivo = sequelize.define('motivo', {
+  const Motivo = sequelize.define('Motivos', {
     idMotivo: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -9,12 +9,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     codigo: {
       type: DataTypes.STRING,
-      primaryKey: true,
       allowNull: false
     },
     descripcion: {
       type: DataTypes.STRING
     }
+  }, {
+    freezeTableName: true
   });
 
   return Motivo;

@@ -2,7 +2,7 @@
 
 module.exports = (sequelize, DataTypes) => {
   const PrestamoNoConsumible = sequelize.define('prestamoNoConsumible', {
-    idNoCosumible: {
+    idNoConsumible: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       allowNull: false
@@ -18,6 +18,8 @@ module.exports = (sequelize, DataTypes) => {
     detalle: {
       type: DataTypes.STRING
     }
+  }, {
+    freezeTableName: true
   });
 
   return PrestamoNoConsumible;

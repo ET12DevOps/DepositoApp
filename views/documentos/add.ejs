@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+</head>
+
+<body>
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <section>
+
+        <div class="container is-fluid">
+            <div>
+                <h1 class="title is-2 mt-4">
+                    <%= title %>
+                </h1>
+            </div>
+
+            <div class="my-6">
+                <div class="field">
+                    <label class="label">NOMBRE</label>
+                    <div class="control">
+                        <input class="input" type="text" name="name" id="name">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">CODIGO</label>
+                    <div class="control">
+                        <input class="input" type="text" name="name" id="name">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">NUMERO</label>
+                    <div class="control">
+                        <input class="input" type="number" name="name" id="name">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">DESCRIPCION</label>
+                    <div class="control">
+                        <input class="input" type="text" name="name" id="name">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <input id="enabled" type="checkbox" name="enabled" class="switch is-outlined is-info is-rtl">
+                    <label for="enabled" class="label is-small">ESTADO</label>
+                </div>
+                <button id="save-documento" type="submit" class="button is-outlined is-primary">Guardar</button>
+                <a class="button is-outlined" href="/documentos">Cancelar</a>
+            </div>
+        </div>
+    </section>
+    <script src="../public/js/documentos/add.js"></script>
+</body>
+
+</html>

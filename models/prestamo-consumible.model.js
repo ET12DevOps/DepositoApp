@@ -13,11 +13,13 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     devuelto: {
-      type: DataTypes.STRING
+      type: DataTypes.BOOLEAN
     },
     detalle: {
       type: DataTypes.STRING
     }
+  }, {
+    freezeTableName: true
   });
 
   return PrestamoConsumible;
