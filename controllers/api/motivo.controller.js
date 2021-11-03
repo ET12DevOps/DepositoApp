@@ -38,7 +38,7 @@ router.get('/motivos/:id', auth.isLoggedIn, async (req, res) => {
 
 router.post('/motivos', auth.isLoggedIn, async (req, res) => {
 
-    // Validar el request (si no es vacio el nombre)
+    
     if (!req.body.name) {
         res.status(400).send({
             message: "Content can not be empty!"
@@ -46,7 +46,7 @@ router.post('/motivos', auth.isLoggedIn, async (req, res) => {
         return;
     }
 
-    // Crear un rol
+    
     const motivo = {
         id: uuidv4(),
         name: req.body.name,
@@ -57,7 +57,7 @@ router.post('/motivos', auth.isLoggedIn, async (req, res) => {
         updatedBy: ''
     };
 
-    // Guardo el rol en la base de datos
+    
     Motivo.create(motivo)
         .then(data => {
             res.send(data);
@@ -75,7 +75,7 @@ router.put('/motivos/:id', auth.isLoggedIn, async (req, res) => {
 
     req.body.updatedAt = Date.now()
 
-    //actualizo la informacion del objeto role
+    
     Role.update(req.body, {
         where: { id: id }
     })
