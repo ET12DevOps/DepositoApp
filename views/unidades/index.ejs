@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+</head>
+
+<body>
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <section>
+
+        <div class="container is-fluid">
+            <h1 class="title is-2 mt-4">
+                <%= title %>
+            </h1>
+
+            <a class="button is-primary my-2" href="/unidades/add">
+                <span class="icon-text">
+                    <span class="icon">
+                        <i class="fad fa-user-plus"></i>
+                    </span>
+                    <span>Nueva unidad</span>
+                </span>
+            </a>
+
+            <progress id="bar" class="progress is-small is-primary" max="100">20%</progress>
+
+            <div class="table-container">
+                <table id="users_datatable" class="table is-hoverable is-striped is-fullwidth">
+
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
+    <script src="../public/js/unidades/index.js"></script>
+</body>
+
+</html>
