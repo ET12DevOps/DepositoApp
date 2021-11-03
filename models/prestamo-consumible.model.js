@@ -2,7 +2,6 @@
 
 module.exports = (sequelize, DataTypes) => {
   const PrestamoConsumible = sequelize.define('prestamoConsumible', {
-    
     idPrestamoConsumible: {
       type: DataTypes.INTEGER,
       primaryKey:true,

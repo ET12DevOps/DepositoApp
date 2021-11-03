@@ -110,9 +110,8 @@ db.PrestamoConsumible.hasMany(db.DevolucionConsumible, {
 });
 
 db.PrestamoNoConsumible.hasMany(db.DevolucionNoConsumible, {
-  foreignKey: "numPrestamo"
+  foreignKey: "idPrestamoNoConsumible"
 });
-
 
 db.Login.belongsTo(db.User, {
   foreignKey: "userId"
