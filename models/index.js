@@ -5,7 +5,7 @@ const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 
-const env = process.env.NODE_ENV || 'test';
+const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.js')[env];
 
 const db = {};
@@ -106,19 +106,11 @@ db.Prestamo.belongsToMany(db.NoConsumible, {
 });
 
 db.PrestamoConsumible.hasMany(db.DevolucionConsumible, {
-  foreignKey: "numPrestamo"
+  foreignKey: "idPrestamoConsumible"
 });
 
 db.PrestamoNoConsumible.hasMany(db.DevolucionNoConsumible, {
-  foreignKey: "numPrestamo"
-});
-
-db.PrestamoConsumible.hasMany(db.DevolucionConsumible, {
-  foreignKey: "idConsumible"
-});
-
-db.PrestamoNoConsumible.hasMany(db.DevolucionNoConsumible, {
-  foreignKey: "idNoConsumible"
+  foreignKey: "idPrestamoNoConsumible"
 });
 
 db.Login.belongsTo(db.User, {
