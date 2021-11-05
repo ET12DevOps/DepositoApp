@@ -90,6 +90,7 @@ app.use('/', require('./controllers/session.controller'))
 app.use('/', require('./controllers/motivo.controller'))
 app.use('/', require('./controllers/documento.controller'))
 app.use('/',require('./controllers/consumible.controller'))
+app.use('/',require('./controllers/noconsumible.controller'))
 app.use('/', require('./controllers/unidad.controller'))
 app.use('/', require('./controllers/persona.controller'))
 
