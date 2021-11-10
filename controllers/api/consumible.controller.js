@@ -1,14 +1,14 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../../models')
-const Motivo = db.Motivo
+const Consumible = db.Consumible
 const { v4: uuidv4 } = require('uuid')
 const auth = require('../../auth')
 
-router.get('/motivos', auth.isLoggedIn, async (req, res) => {
+router.get('/consimuble', auth.isLoggedIn, async (req, res) => {
 
-    await Motivo.findAll({
-        attributes: ['id', 'name', 'motivo', 'createdAt', 'updatedAt']
+    await Consumible.findAll({
+        attributes: ['id', 'name', 'enabled', 'createdAt', 'updatedAt']
     })
         .then(data => {
             res.send(data);
@@ -21,11 +21,11 @@ router.get('/motivos', auth.isLoggedIn, async (req, res) => {
         });
 })
 
-router.get('/motivos/:id', auth.isLoggedIn, async (req, res) => {
+router.get('/consumible/:id', auth.isLoggedIn, async (req, res) => {
 
     const id = req.params.id;
 
-    await Motivo.findByPk(id)
+    await Consumible.findByPk(id)
         .then(data => {
             res.send(data);
         })
@@ -36,9 +36,9 @@ router.get('/motivos/:id', auth.isLoggedIn, async (req, res) => {
         });
 })
 
-router.post('/motivos', auth.isLoggedIn, async (req, res) => {
+router.post('/consumible', auth.isLoggedIn, async (req, res) => {
 
-    
+    // Validar el request (si no es vacio el nombre)
     if (!req.body.name) {
         res.status(400).send({
             message: "Content can not be empty!"
@@ -46,8 +46,8 @@ router.post('/motivos', auth.isLoggedIn, async (req, res) => {
         return;
     }
 
-    
-    const motivo = {
+    // Crear un consumible
+    const consumible = {
         id: uuidv4(),
         name: req.body.name,
         enabled: req.body.enabled,
@@ -57,8 +57,8 @@ router.post('/motivos', auth.isLoggedIn, async (req, res) => {
         updatedBy: ''
     };
 
-    
-    Motivo.create(motivo)
+    // Guardo el rol en la base de datos
+    consumible.create(consumible)
         .then(data => {
             res.send(data);
         })
@@ -70,13 +70,13 @@ router.post('/motivos', auth.isLoggedIn, async (req, res) => {
         });
 })
 
-router.put('/motivos/:id', auth.isLoggedIn, async (req, res) => {
+router.put('/consumible/:id', auth.isLoggedIn, async (req, res) => {
     const id = req.params.id;
 
     req.body.updatedAt = Date.now()
 
-    
-    Role.update(req.body, {
+    //actualizo la informacion del objeto consumible
+    Consumible.update(req.body, {
         where: { id: id }
     })
         .then(num => {
@@ -97,11 +97,11 @@ router.put('/motivos/:id', auth.isLoggedIn, async (req, res) => {
         });
 })
 
-router.delete('/motivos/:id', auth.isLoggedIn, async (req, res) => {
+router.delete('/consumible/:id', auth.isLoggedIn, async (req, res) => {
 
     const id = req.params.id;
 
-    Motivo.destroy({
+    Consumible.destroy({
         where: { id: id }
     })
         .then(num => {

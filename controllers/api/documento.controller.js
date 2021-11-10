@@ -1,14 +1,14 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../../models')
-const Motivo = db.Motivo
+const Documento = db.Documento
 const { v4: uuidv4 } = require('uuid')
 const auth = require('../../auth')
 
-router.get('/motivos', auth.isLoggedIn, async (req, res) => {
+router.get('/documentos', auth.isLoggedIn, async (req, res) => {
 
-    await Motivo.findAll({
-        attributes: ['id', 'name', 'motivo', 'createdAt', 'updatedAt']
+    await Documento.findAll({
+        attributes: ['id', 'name', 'enabled', 'createdAt', 'updatedAt']
     })
         .then(data => {
             res.send(data);
@@ -16,29 +16,29 @@ router.get('/motivos', auth.isLoggedIn, async (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while retrieving Roles."
+                    err.message || "Some error occurred while retrieving Documentos."
             });
         });
 })
 
-router.get('/motivos/:id', auth.isLoggedIn, async (req, res) => {
+router.get('/documentos/:id', auth.isLoggedIn, async (req, res) => {
 
     const id = req.params.id;
 
-    await Motivo.findByPk(id)
+    await Documento.findByPk(id)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error retrieving Roles with id=" + id
+                message: "Error retrieving Documento with id=" + id
             });
         });
 })
 
-router.post('/motivos', auth.isLoggedIn, async (req, res) => {
+router.post('/documentos', auth.isLoggedIn, async (req, res) => {
 
-    
+   
     if (!req.body.name) {
         res.status(400).send({
             message: "Content can not be empty!"
@@ -47,7 +47,7 @@ router.post('/motivos', auth.isLoggedIn, async (req, res) => {
     }
 
     
-    const motivo = {
+    const documento = {
         id: uuidv4(),
         name: req.body.name,
         enabled: req.body.enabled,
@@ -57,67 +57,67 @@ router.post('/motivos', auth.isLoggedIn, async (req, res) => {
         updatedBy: ''
     };
 
-    
-    Motivo.create(motivo)
+   
+    Documento.create(documento)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the Roles."
+                    err.message || "Some error occurred while creating the Documentos."
             });
         });
 })
 
-router.put('/motivos/:id', auth.isLoggedIn, async (req, res) => {
+router.put('/documentos/:id', auth.isLoggedIn, async (req, res) => {
     const id = req.params.id;
 
     req.body.updatedAt = Date.now()
 
     
-    Role.update(req.body, {
+    Documento.update(req.body, {
         where: { id: id }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Role was updated successfully."
+                    message: "Documento was updated successfully."
                 });
             } else {
                 res.send({
-                    message: `Cannot update Role with id=${id}. Maybe Role was not found or req.body is empty!`
+                    message: `Cannot update Documento with id=${id}. Maybe Documento was not found or req.body is empty!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error updating Role with id=" + id
+                message: "Error updating Documento with id=" + id
             });
         });
 })
 
-router.delete('/motivos/:id', auth.isLoggedIn, async (req, res) => {
+router.delete('/documentos/:id', auth.isLoggedIn, async (req, res) => {
 
     const id = req.params.id;
 
-    Motivo.destroy({
+    Documento.destroy({
         where: { id: id }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Role was deleted successfully!"
+                    message: "Documento was deleted successfully!"
                 });
             } else {
                 res.send({
-                    message: `Cannot delete Role with id=${id}. Maybe Role was not found!`
+                    message: `Cannot delete Documento with id=${id}. Maybe Documento was not found!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Could not delete Role with id=" + id
+                message: "Could not delete Documento with id=" + id
             });
         });
 })

@@ -7,10 +7,11 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       allowNull: false
     },
-    numPrestamo: {
+    idPrestamoNoConsumible: {
       type: DataTypes.INTEGER,
-      primaryKey: true,
-      allowNull: false
+    },
+    fecha: {
+      type: DataTypes.DATE,
     }
   }, {
     freezeTableName: true
