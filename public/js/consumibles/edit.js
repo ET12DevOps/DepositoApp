@@ -1,7 +1,7 @@
 const url = window.location.protocol + "//" + window.location.host + "/";
 
 const id = document.getElementById('consumibleId')
-const name = document.getElementById('name')
+const nombre = document.getElementById('nombre')
 const enabled = document.getElementById('enabled')
 const createdAt = document.getElementById('createdAt')
 const updatedAt = document.getElementById('updatedAt')

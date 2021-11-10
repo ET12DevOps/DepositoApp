@@ -12,7 +12,6 @@
     </header>
 
     <section>
-
         <div class="container is-fluid">
             <div>
                 <h1 class="title is-2 mt-4">
@@ -24,17 +23,18 @@
                 <div class="field">
                     <label class="label">IDENTIFICADOR</label>
                     <div class="control">
-                        <input class="input" type="text" value="<%= consumibleId %>" name="id" id="consumibleId" disabled>
+                        <input class="input" type="text" value="<%= roleId %>" name="id" id="roleId" disabled>
                     </div>
                 </div>
                 <div class="field">
                     <label class="label">NOMBRE</label>
                     <div class="control">
-                        <input class="input" type="text" name="name" id="name">
+                        <input class="input" type="text" name="name" id="name" disabled>
                     </div>
                 </div>
                 <div class="field">
-                    <input id="enabled" type="checkbox" name="enabled" class="switch is-rtl">
+                    <input id="enabled" type="checkbox" name="enabled" class="switch is-outlined is-info is-rtl"
+                        disabled>
                     <label for="enabled" class="label is-small">ESTADO</label>
                 </div>
                 <div class="field">
@@ -49,12 +49,16 @@
                         <input class="input" type="text" name="updatedAt" id="updatedAt" disabled>
                     </div>
                 </div>
-                <button id="save-role" type="submit" class="button is-outlined is-primary">Guardar</button>
-                <a class="button is-outlined" href="/consumible">Cancelar</a>
+                <div class="mt-6">
+                    <h3 class="subtitle is-5">¿Desea eliminar el rol?</h3>
+                    <button id="save-role" type="submit" class="button is-outlined is-danger">Eliminar</button>
+                    <a class="button is-outlined" href="/consumibles">Cancelar</a>
+                </div>
             </div>
         </div>
     </section>
-    <script src="../../public/js/consumible/edit.js"></script>
+    <script src="../../public/js/consumibles/edit.js"></script>
+    <script src="../../public/js/consumibles/delete.js"></script>
 </body>
 
 </html>

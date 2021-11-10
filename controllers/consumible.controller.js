@@ -11,7 +11,7 @@ router.get('/consumibles', auth.isLoggedIn, (req, res) => {
 
 router.get('/consumibles/:id/edit', auth.isLoggedIn, (req, res) => {
     res.render('./consumibles/edit', {
-        title: "Consumible",
+        title: "Consumibles",
         consumibleId: req.params.id,
         user: req.user
     })
@@ -19,7 +19,7 @@ router.get('/consumibles/:id/edit', auth.isLoggedIn, (req, res) => {
 
 router.get('/consumibles/:id/delete', auth.isLoggedIn, (req, res) => {
     res.render('./consumibles/delete', { 
-        title: "Consumible",
+        title: "Consumibles",
         consumibleId: req.params.id,
         user: req.user 
     })
@@ -27,7 +27,7 @@ router.get('/consumibles/:id/delete', auth.isLoggedIn, (req, res) => {
 
 router.get('/consumibles/add', auth.isLoggedIn, (req, res) => {
     res.render('./consumibles/add', { 
-        title: "Consumible",
+        title: "Consumibles",
         user: req.user       
     })
 })
