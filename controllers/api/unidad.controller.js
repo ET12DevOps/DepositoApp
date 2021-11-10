@@ -4,10 +4,10 @@ const db = require('../../models')
 const Unidad = db.Unidad
 const auth = require('../../auth')
 
-Router.get ('/unidades/id', auth.isLoggedIn, async(req,res)=>{
+router.get ('/unidades/id', auth.isLoggedIn, async(req,res)=>{
 
 await Unidad.findall({
-    attributes:['id','name','enabled','createdAT','updateAT']
+    attributes:['idUnidad','nombre','createdAt','updateAt']
 })
     .then(data =>{
         res.send(data);
@@ -68,7 +68,7 @@ router.put('/unidades/:id', auth.isLoggedIn, async (req, res) => {
 
     req.body.updatedAt = Date.now()
 
-    Role.update(req.body, {
+    Unidad.update(req.body, {
         where: { id: id }
     })
         .then(num => {
@@ -93,7 +93,7 @@ router.delete('/unidades/:id', auth.isLoggedIn, async (req, res) => {
 
     const id = req.params.id;
 
-    Persona.destroy({
+    Unidad.destroy({
         where: { id: id }
     })
         .then(num => {
