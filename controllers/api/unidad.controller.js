@@ -93,7 +93,7 @@ router.delete('/unidades/:id', auth.isLoggedIn, async (req, res) => {
 
     const id = req.params.id;
 
-    Persona.destroy({
+    Unidad.destroy({
         where: { id: id }
     })
         .then(num => {

@@ -52,7 +52,7 @@ router.get ('/ personas/id', auth.isLoggedIn, async(req,res)=>{
             updatedAt: Date.now(),
             updatedBy: ''
         };
-        Unidad.create(unidad)
+        Persona.create(persona)
         .then(data => {
             res.send(data);
         })
