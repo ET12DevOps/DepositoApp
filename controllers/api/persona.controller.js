@@ -4,7 +4,7 @@ const db = require('../../models')
 const Persona = db.Persona
 const auth = require('../../auth')
 
-Router.get ('/ personas/id', auth.isLoggedIn, async(req,res)=>{
+router.get ('/ personas/id', auth.isLoggedIn, async(req,res)=>{
 
     await Persona.findall({
         attributes:['idPersona','nombre','apellido','dni','email','estado','createdAt','updateAt']
