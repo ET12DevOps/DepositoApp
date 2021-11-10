@@ -3,14 +3,14 @@ const fs = require('fs');
 module.exports = {
     development: {
         username: 'root',
-        password: 'telesca1234',
+        password: 'root',
         database: 'deposito',
         host: 'localhost',
         dialect: 'mysql'
     },
     test: {
         username: 'root',
-        password: 'Lujho12',
+        password: 'root',
         database: 'deposito',
         host: 'win2016-01',
         dialect: 'mysql'

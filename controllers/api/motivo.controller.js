@@ -48,9 +48,9 @@ router.post('/motivos', auth.isLoggedIn, async (req, res) => {
 
     
     const motivo = {
-        id: uuidv4(),
-        name: req.body.name,
-        enabled: req.body.enabled,
+        idMotivo: 0,
+        codigo: req.body.codigo,
+        descripcion: req.body.descripcion,
         createAt: Date.now(),
         createdBy: '',
         updatedAt: Date.now(),

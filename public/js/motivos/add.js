@@ -10,8 +10,8 @@ saveMotivo.addEventListener('click', postData)
 function postData() {
     var data = {
         id: '',
-        name: name.value,
-        motivo: motivo.value,
+        codigo: codigo.value,
+        descripcion: descripcion.value,
         createdAt: '',
         createdBy: '',
     }
