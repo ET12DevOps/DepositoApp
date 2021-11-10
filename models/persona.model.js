@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING
     },
     estado: {
-      type: DataTypes.STRING
+      type: DataTypes.BOOLEAN
     }
   }, {
     freezeTableName: true
