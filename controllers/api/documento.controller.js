@@ -8,7 +8,7 @@ const auth = require('../../auth')
 router.get('/documentos', auth.isLoggedIn, async (req, res) => {
 
     await Documento.findAll({
-        attributes: ['id', 'name', 'enabled', 'createdAt', 'updatedAt']
+        attributes: ['idDocumento', 'codigo', 'numero','descripcion', 'createdAt', 'updatedAt']
     })
         .then(data => {
             res.send(data);
