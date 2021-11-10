@@ -5,7 +5,7 @@ const Consumible = db.Consumible
 const { v4: uuidv4 } = require('uuid')
 const auth = require('../../auth')
 
-router.get('/consimubles', auth.isLoggedIn, async (req, res) => {
+router.get('/consumibles', auth.isLoggedIn, async (req, res) => {
 
     await Consumible.findAll({
         attributes: ['id', 'name', 'enabled', 'createdAt', 'updatedAt']
