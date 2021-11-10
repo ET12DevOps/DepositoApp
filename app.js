@@ -98,6 +98,12 @@ app.use('/', require('./controllers/persona.controller'))
 app.use('/api', require('./controllers/api/user.controller'))
 app.use('/api', require('./controllers/api/role.controller'))
 app.use('/api', require('./controllers/api/session.controller'))
+app.use('/api', require('./controllers/api/documento.controller'))
+app.use('/api', require('./controllers/api/unidad.controller'))
+app.use('/api', require('./controllers/api/persona.controller'))
+app.use('/api', require('./controllers/api/motivo.controller'))
+app.use('/api', require('./controllers/api/consumible.controller'))
+app.use('/api', require('./controllers/api/noconsumible.controller'))
 
 //inicializacion base de datos (si no existe se crea) 
 db.sequelize.sync().then((req) => {

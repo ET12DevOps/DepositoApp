@@ -1,4 +1,4 @@
-saveRole.addEventListener('click', deleteData)
+saveDocumento.addEventListener('click', deleteData)
 
 function deleteData(){
     console.log(id.value)
