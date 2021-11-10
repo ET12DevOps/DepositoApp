@@ -4,7 +4,7 @@ const db = require('../../models')
 const Unidad = db.Unidad
 const auth = require('../../auth')
 
-Router.get ('/unidades/id', auth.isLoggedIn, async(req,res)=>{
+router.get ('/unidades/id', auth.isLoggedIn, async(req,res)=>{
 
 await Unidad.findall({
     attributes:['id','name','enabled','createdAT','updateAT']
@@ -68,11 +68,12 @@ router.put('/unidades/:id', auth.isLoggedIn, async (req, res) => {
 
     req.body.updatedAt = Date.now()
 
-    Role.update(req.body, {
+    Unidad.update(req.body, {
         where: { id: id }
     })
         .then(num => {
             if (num == 1) {
+                
                 res.send({
                     message: "Unidad was updated successfully."
                 });
