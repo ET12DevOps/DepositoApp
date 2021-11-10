@@ -1,17 +1,19 @@
 const url = window.location.protocol + "//" + window.location.host + "/";
 
-const id = document.getElementById('documentoId')
-const name = document.getElementById('name')
-const enabled = document.getElementById('enabled')
+const id = document.getElementById('idDocumento')
+const codigo = document.getElementById('codigo')
+const numero = document.getElementById('numero')
+const descripcion = document.getElementById('descripcion')
 const saveDocumento = document.getElementById('save-documento')
 
 saveDocumento.addEventListener('click', postData)
 
 function postData() {
     var data = {
-        id: '',
-        name: name.value,
-        enabled: enabled.checked,
+        id: 0,
+        codigo: codigo.value,
+        numero: numero.value,
+        descripcion: descripcion.value,
         createdAt: '',
         createdBy: '',
         updatedAt: '',
