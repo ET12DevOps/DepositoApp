@@ -8,7 +8,7 @@ const auth = require('../../auth')
 router.get('/motivos', auth.isLoggedIn, async (req, res) => {
 
     await Motivo.findAll({
-        attributes: ['id', 'name', 'motivo', 'createdAt', 'updatedAt']
+        attributes: ['idMotivo', 'codigo', 'descripcion', 'createdAt', 'updatedAt']
     })
         .then(data => {
             res.send(data);
