@@ -101,6 +101,7 @@ app.use('/api', require('./controllers/api/user.controller'))
 app.use('/api', require('./controllers/api/role.controller'))
 app.use('/api', require('./controllers/api/session.controller'))
 
+
 //inicializacion base de datos (si no existe se crea) 
 db.sequelize.sync().then((req) => {
 
