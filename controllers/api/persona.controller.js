@@ -4,10 +4,10 @@ const db = require('../../models')
 const Persona = db.Persona
 const auth = require('../../auth')
 
-router.get ('/ personas/id', auth.isLoggedIn, async(req,res)=>{
+router.get ('/personas', auth.isLoggedIn, async(req,res)=>{
 
-    await Persona.findall({
-        attributes:['idPersona','nombre','apellido','dni','email','estado','createdAt','updateAt']
+    await Persona.findAll({
+        attributes:['idPersona','nombre','apellido','dni','email','estado','createdAt','updatedAt']
     })
         .then(data =>{
             res.send(data);
@@ -44,9 +44,12 @@ router.get ('/ personas/id', auth.isLoggedIn, async(req,res)=>{
             return;
         }
         const persona = {
-            id: uuidv4(),
-            name: req.body.name,
-            enabled: req.body.enabled,
+            idPersona: (0),
+            nombre: req.body.nombre,
+            apellido: req.body.apellido,
+            dni: req.body.dni,
+            email: req.body.email,
+            estado: req.body.estado,
             createAt: Date.now(),
             createdBy: '',
             updatedAt: Date.now(),
