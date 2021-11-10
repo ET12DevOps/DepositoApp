@@ -5,7 +5,7 @@ const Consumible = db.Consumible
 const { v4: uuidv4 } = require('uuid')
 const auth = require('../../auth')
 
-router.get('/consimuble', auth.isLoggedIn, async (req, res) => {
+router.get('/consimubles', auth.isLoggedIn, async (req, res) => {
 
     await Consumible.findAll({
         attributes: ['id', 'name', 'enabled', 'createdAt', 'updatedAt']
@@ -21,7 +21,7 @@ router.get('/consimuble', auth.isLoggedIn, async (req, res) => {
         });
 })
 
-router.get('/consumible/:id', auth.isLoggedIn, async (req, res) => {
+router.get('/consumibles/:id', auth.isLoggedIn, async (req, res) => {
 
     const id = req.params.id;
 
@@ -36,7 +36,7 @@ router.get('/consumible/:id', auth.isLoggedIn, async (req, res) => {
         });
 })
 
-router.post('/consumible', auth.isLoggedIn, async (req, res) => {
+router.post('/consumibles', auth.isLoggedIn, async (req, res) => {
 
     // Validar el request (si no es vacio el nombre)
     if (!req.body.name) {
@@ -65,12 +65,12 @@ router.post('/consumible', auth.isLoggedIn, async (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the Roles."
+                    err.message || "Some error occurred while creating the Consumibles."
             });
         });
 })
 
-router.put('/consumible/:id', auth.isLoggedIn, async (req, res) => {
+router.put('/consumibles/:id', auth.isLoggedIn, async (req, res) => {
     const id = req.params.id;
 
     req.body.updatedAt = Date.now()
@@ -82,7 +82,7 @@ router.put('/consumible/:id', auth.isLoggedIn, async (req, res) => {
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Role was updated successfully."
+                    message: "Consumible was updated successfully."
                 });
             } else {
                 res.send({
@@ -97,7 +97,7 @@ router.put('/consumible/:id', auth.isLoggedIn, async (req, res) => {
         });
 })
 
-router.delete('/consumible/:id', auth.isLoggedIn, async (req, res) => {
+router.delete('/consumibles/:id', auth.isLoggedIn, async (req, res) => {
 
     const id = req.params.id;
 
@@ -107,7 +107,7 @@ router.delete('/consumible/:id', auth.isLoggedIn, async (req, res) => {
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Role was deleted successfully!"
+                    message: "Consumible was deleted successfully!"
                 });
             } else {
                 res.send({

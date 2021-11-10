@@ -1,11 +1,11 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../../models')
-const Noconsumible = db.Role
+const Noconsumible = db.Noconsumible
 const { v4: uuidv4 } = require('uuid')
 const auth = require('../../auth')
 
-router.get('/noconsumible', auth.isLoggedIn, async (req, res) => {
+router.get('/noconsumibles', auth.isLoggedIn, async (req, res) => {
 
     await Noconsumible.findAll({
         attributes: ['id', 'name', 'enabled', 'createdAt', 'updatedAt']
@@ -16,12 +16,12 @@ router.get('/noconsumible', auth.isLoggedIn, async (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while retrieving Roles."
+                    err.message || "Some error occurred while retrieving No consumibles."
             });
         });
 })
 
-router.get('/noconsumible/:id', auth.isLoggedIn, async (req, res) => {
+router.get('/noconsumibles/:id', auth.isLoggedIn, async (req, res) => {
 
     const id = req.params.id;
 
@@ -36,7 +36,7 @@ router.get('/noconsumible/:id', auth.isLoggedIn, async (req, res) => {
         });
 })
 
-router.post('/noconsumible', auth.isLoggedIn, async (req, res) => {
+router.post('/noconsumibles', auth.isLoggedIn, async (req, res) => {
 
     // Validar el request (si no es vacio el nombre)
     if (!req.body.name) {
@@ -65,12 +65,12 @@ router.post('/noconsumible', auth.isLoggedIn, async (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the Roles."
+                    err.message || "Some error occurred while creating the No consumibles."
             });
         });
 })
 
-router.put('/noconsumible/:id', auth.isLoggedIn, async (req, res) => {
+router.put('/noconsumibles/:id', auth.isLoggedIn, async (req, res) => {
     const id = req.params.id;
 
     req.body.updatedAt = Date.now()
@@ -82,11 +82,11 @@ router.put('/noconsumible/:id', auth.isLoggedIn, async (req, res) => {
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Role was updated successfully."
+                    message: "No consumible was updated successfully."
                 });
             } else {
                 res.send({
-                    message: `Cannot update Role with id=${id}. Maybe Role was not found or req.body is empty!`
+                    message: `Cannot update No consumible with id=${id}. Maybe Role was not found or req.body is empty!`
                 });
             }
         })
@@ -97,7 +97,7 @@ router.put('/noconsumible/:id', auth.isLoggedIn, async (req, res) => {
         });
 })
 
-router.delete('/noconsumible/:id', auth.isLoggedIn, async (req, res) => {
+router.delete('/noconsumibles/:id', auth.isLoggedIn, async (req, res) => {
 
     const id = req.params.id;
 
@@ -107,11 +107,11 @@ router.delete('/noconsumible/:id', auth.isLoggedIn, async (req, res) => {
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Role was deleted successfully!"
+                    message: "No consumible was deleted successfully!"
                 });
             } else {
                 res.send({
-                    message: `Cannot delete Role with id=${id}. Maybe Role was not found!`
+                    message: `Cannot delete Role with id=${id}. Maybe No consumible was not found!`
                 });
             }
         })
