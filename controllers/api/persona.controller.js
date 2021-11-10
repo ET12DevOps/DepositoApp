@@ -7,7 +7,7 @@ const auth = require('../../auth')
 router.get ('/ personas/id', auth.isLoggedIn, async(req,res)=>{
 
     await Persona.findall({
-        attributes:['id','name','enabled','createdAT','updateAT']
+        attributes:['idPersona','nombre','apellido','dni','email','estado','createdAt','updateAt']
     })
         .then(data =>{
             res.send(data);
@@ -52,7 +52,7 @@ router.get ('/ personas/id', auth.isLoggedIn, async(req,res)=>{
             updatedAt: Date.now(),
             updatedBy: ''
         };
-        Unidad.create(unidad)
+        Persona.create(persona)
         .then(data => {
             res.send(data);
         })
