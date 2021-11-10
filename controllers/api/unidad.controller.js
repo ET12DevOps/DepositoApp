@@ -1,23 +1,23 @@
-const express = require ('express')
+const express = require('express')
 const router = express.Router()
 const db = require('../../models')
 const Unidad = db.Unidad
 const auth = require('../../auth')
 
-router.get ('/unidades/id', auth.isLoggedIn, async(req,res)=>{
+router.get('/unidades', auth.isLoggedIn, async (req, res) => {
 
-await Unidad.findall({
-    attributes:['idUnidad','nombre','createdAt','updateAt']
-})
-    .then(data =>{
-        res.send(data);
+    await Unidad.findAll({
+        attributes: ['idUnidad', 'nombre', 'referencia', 'createdAt', 'updatedAt']
     })
-    .catch(err =>{
-        res.status(500).send({
-            message:
-                err.message || "Some error ocurred while retrieving Unidad."
+        .then(data => {
+            res.send(data);
         })
-    })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error ocurred while retrieving Unidad."
+            })
+        })
 })
 
 router.get('/unidades/:id', auth.isLoggedIn, async (req, res) => {
@@ -36,31 +36,31 @@ router.get('/unidades/:id', auth.isLoggedIn, async (req, res) => {
 })
 router.post('/unidades', auth.isLoggedIn, async (req, res) => {
 
-    if (!req.body.name) {
+    if (!req.body.nombre) {
         res.status(400).send({
             message: "Content can not be empty!"
         });
         return;
     }
     const unidad = {
-        id: uuidv4(),
-        name: req.body.name,
-        enabled: req.body.enabled,
+        idUnidad: 0,
+        nombre: req.body.nombre,
+        referencia: req.body.referencia,
         createAt: Date.now(),
         createdBy: '',
         updatedAt: Date.now(),
         updatedBy: ''
     };
     Unidad.create(unidad)
-    .then(data => {
-        res.send(data);
-    })
-    .catch(err => {
-        res.status(500).send({
-            message:
-                err.message || "Some error occurred while creating the Unidades."
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while creating the Unidades."
+            });
         });
-    });
 })
 
 router.put('/unidades/:id', auth.isLoggedIn, async (req, res) => {
@@ -73,7 +73,7 @@ router.put('/unidades/:id', auth.isLoggedIn, async (req, res) => {
     })
         .then(num => {
             if (num == 1) {
-                
+
                 res.send({
                     message: "Unidad was updated successfully."
                 });

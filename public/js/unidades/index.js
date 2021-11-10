@@ -9,16 +9,16 @@ const getData = async () => {
         const response = await fetch(url + 'api/unidades')
 
         const userData = await response.json()
-
+        console.log(userData)
         let progresBar = document.getElementById("bar")
 
         progresBar.style.display = "none"
 
-        const datatable = new simpleDatatables.DataTable("#personas_datatable", {
+        const datatable = new simpleDatatables.DataTable("#unidad_datatable", {
             searchable: true,
             paging: true,
             data: {
-                headings: ['NOMBRE', 'ESTADO', 'CODIGO', 'NUMERO','DESCRIPCION', 'ACCIONES'],
+                headings: ['NOMBRE', 'REFERENCIA', 'createdAt', 'updatedAt', 'ACCIONES'],
                 data: userData.map((x) => {
                     var res = Object.values(x)
                     res.shift()
@@ -28,24 +28,19 @@ const getData = async () => {
             },
             columns: [
                 { select: 0 },
-                {
-                    select: 1, render: function (data, cell, row) {
-                        if (data === 'true')
-                            return `<span class="tag is-success is-light">Activo</span>`
-                        else
-                            return `<span class="tag is-danger is-light">Inactivo</span>`
-                    }
-                },
-                {
-                    select: 2, type: "date", render: function (data, cell, row) {
-                        return new Date(data).toLocaleString('es-AR')
-                    }
-                },
-                {
-                    select: 3, render: function (data, cell, row) {
-                        return new Date(data).toLocaleString('es-AR')
-                    }
-                },
+                { select: 1 },
+                { select: 2, hidden: true },
+                { select: 3, hidden: true },
+                // {
+                //     select: 1, type: "date", render: function (data, cell, row) {
+                //         return new Date(data).toLocaleString('es-AR')
+                //     }
+                // },
+                // {
+                //     select: 3, render: function (data, cell, row) {
+                //         return new Date(data).toLocaleString('es-AR')
+                //     }
+                // },
                 {
                     select: 4, sortable: false, render: function (data, cell, row) {
                         var editButton = `<a href="/unidades/${userData[row.dataIndex].id}/edit" id="edit-${userData[row.dataIndex].id}" class="mr-2 has-text-info"><i class="fad fa-pencil"></i></a>`
