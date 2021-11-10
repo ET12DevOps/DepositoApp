@@ -1,13 +1,13 @@
 const url = window.location.protocol + "//" + window.location.host + "/";
 
-const id = document.getElementById('consumibleId')
+const id = document.getElementById('unidadId')
 const name = document.getElementById('name')
 const enabled = document.getElementById('enabled')
 const createdAt = document.getElementById('createdAt')
 const updatedAt = document.getElementById('updatedAt')
 
 const getData = async() => {
-    const res = await fetch(url + 'api/consumibles/' + id.value)
+    const res = await fetch(url + 'api/unidades/' + id.value)
     const data = await res.json()
     
     name.value = data.name
@@ -20,9 +20,9 @@ document.addEventListener("DOMContentLoaded", function(){
     getData()
 });
 
-const saveConsumible = document.getElementById('save-consumibles')
+const saveUnidad = document.getElementById('save-unidades')
 
-saveConsumible.addEventListener('click', putData)
+saveUnidad.addEventListener('click', putData)
 
 function putData() {
     var data = {
@@ -35,7 +35,7 @@ function putData() {
     
     console.log(data)
 
-    fetch(url + 'api/consumibles/' + id.value, {
+    fetch(url + 'api/unidades/' + id.value, {
         method: 'PUT', 
         body: JSON.stringify(data),
         headers:{

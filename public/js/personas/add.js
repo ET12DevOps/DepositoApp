@@ -1,11 +1,11 @@
 const url = window.location.protocol + "//" + window.location.host + "/";
 
-const id = document.getElementById('consumibleId')
+const id = document.getElementById('PersonaId')
 const name = document.getElementById('name')
 const enabled = document.getElementById('enabled')
-const saveConsumible = document.getElementById('save-consumible')
+const savePersona = document.getElementById('save-Persona')
 
-saveConsumible.addEventListener('click', postData)
+savePersona.addEventListener('click', postData)
 
 function postData() {
     var data = {
@@ -20,7 +20,7 @@ function postData() {
     
     console.log(data)
 
-    fetch(url + 'api/consumibles/', {
+    fetch(url + 'api/personas/', {
         method: 'POST', 
         body: JSON.stringify(data),
         headers:{

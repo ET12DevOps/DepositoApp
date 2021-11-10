@@ -1,9 +1,9 @@
-saveConsumible.addEventListener('click', deleteData)
+savePersona.addEventListener('click', deleteData)
 
 function deleteData(){
     console.log(id.value)
 
-    fetch(url + 'api/consumibles/' + id.value, {
+    fetch(url + 'api/personas/' + id.value, {
         method: 'DELETE',
         headers:{
             'Content-Type': 'application/json'
