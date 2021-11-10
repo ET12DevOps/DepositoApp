@@ -8,7 +8,7 @@ const auth = require('../../auth')
 router.get('/noconsumibles', auth.isLoggedIn, async (req, res) => {
 
     await Noconsumible.findAll({
-        attributes: ['id', 'name', 'enabled', 'createdAt', 'updatedAt']
+        attributes: ['idNoConsumible', 'codigo', 'nombre','detalle','IdUnidad','existenciaInicial','existenciaActual', 'createdAt', 'updatedAt']
     })
         .then(data => {
             res.send(data);

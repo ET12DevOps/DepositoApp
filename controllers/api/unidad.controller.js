@@ -73,6 +73,7 @@ router.put('/unidades/:id', auth.isLoggedIn, async (req, res) => {
     })
         .then(num => {
             if (num == 1) {
+                
                 res.send({
                     message: "Unidad was updated successfully."
                 });
