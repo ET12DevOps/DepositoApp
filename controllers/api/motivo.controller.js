@@ -31,7 +31,7 @@ router.get('/motivos/:id', auth.isLoggedIn, async (req, res) => {
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error retrieving Roles with id=" + id
+                message: "Error retrieving Motivos with id=" + id
             });
         });
 })
@@ -65,7 +65,7 @@ router.post('/motivos', auth.isLoggedIn, async (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the Roles."
+                    err.message || "Some error occurred while creating the Motivo."
             });
         });
 })
@@ -76,23 +76,23 @@ router.put('/motivos/:id', auth.isLoggedIn, async (req, res) => {
     req.body.updatedAt = Date.now()
 
     
-    Role.update(req.body, {
+    Motivo.update(req.body, {
         where: { id: id }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Role was updated successfully."
+                    message: "Motivo was updated successfully."
                 });
             } else {
                 res.send({
-                    message: `Cannot update Role with id=${id}. Maybe Role was not found or req.body is empty!`
+                    message: `Cannot update Motivo with id=${id}. Maybe Motivo was not found or req.body is empty!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error updating Role with id=" + id
+                message: "Error updating Motivo with id=" + id
             });
         });
 })
@@ -107,17 +107,17 @@ router.delete('/motivos/:id', auth.isLoggedIn, async (req, res) => {
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Role was deleted successfully!"
+                    message: "Motivo was deleted successfully!"
                 });
             } else {
                 res.send({
-                    message: `Cannot delete Role with id=${id}. Maybe Role was not found!`
+                    message: `Cannot delete Motivo with id=${id}. Maybe Motivo was not found!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Could not delete Role with id=" + id
+                message: "Could not delete Motivo with id=" + id
             });
         });
 })

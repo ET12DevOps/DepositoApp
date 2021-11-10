@@ -3,9 +3,9 @@ const url = window.location.protocol + "//" + window.location.host + "/";
 const id = document.getElementById('documentoId')
 const name = document.getElementById('name')
 const enabled = document.getElementById('enabled')
-const saveRole = document.getElementById('save-documento')
+const saveDocumento = document.getElementById('save-documento')
 
-saveRole.addEventListener('click', postData)
+saveDocumento.addEventListener('click', postData)
 
 function postData() {
     var data = {
