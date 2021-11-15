@@ -1,5 +1,21 @@
 # Usuarios
 
+## Tests
+
+Crear un usuario **Administrador** mediante un POST en el endpoint **http://localhost:3000/api/users**
+con el siguiente body request desde la extension del Visual Studio Code **Thunder Client**
+
+```json
+{
+    "username":"administrador@gmail.com",
+    "password": "tecnica12",
+    "email": "administrador@gmail.com",
+    "firstName": "Admin",
+    "lastName": "ET12",
+    "enabled" : true
+}
+```
+
 ## Enlaces
 
 Nodejs - https://nodejs.org/es/
