@@ -1,7 +1,7 @@
 const url = window.location.protocol + "//" + window.location.host + "/";
 
 const id = document.getElementById('noconsumibleId')
-const name = document.getElementById('name')
+const name = document.getElementById('nombre')
 const enabled = document.getElementById('enabled')
 const saveNoConsumible = document.getElementById('save-noconsumible')
 

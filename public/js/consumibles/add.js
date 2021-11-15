@@ -7,7 +7,7 @@ const saveConsumible = document.getElementById('save-consumible')
 
 saveConsumible.addEventListener('click', postData)
 
-function postData() {
+function postData() { 
     var data = {
       nombre: req.body.nombre,
       codigo: req.body.codigo,

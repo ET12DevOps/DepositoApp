@@ -1,7 +1,7 @@
 const url = window.location.protocol + "//" + window.location.host + "/";
 
 const id = document.getElementById('noconsumibleId')
-const name = document.getElementById('name')
+const nombre = document.getElementById('nombre')
 const enabled = document.getElementById('enabled')
 const createdAt = document.getElementById('createdAt')
 const updatedAt = document.getElementById('updatedAt')
@@ -14,7 +14,7 @@ const getData = async() => {
     enabled.checked = data.enabled 
     createdAt.value = new Date(data.createdAt).toLocaleString('es-AR')
     updatedAt.value =  new Date(data.updatedAt).toLocaleString('es-AR')
-}
+} 
 
 document.addEventListener("DOMContentLoaded", function(){
     getData()

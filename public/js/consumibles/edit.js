@@ -13,7 +13,7 @@ const getData = async() => {
     name.value = data.name
     enabled.checked = data.enabled 
     createdAt.value = new Date(data.createdAt).toLocaleString('es-AR')
-    updatedAt.value =  new Date(data.updatedAt).toLocaleString('es-AR')
+    updatedAt.value =  new Date(data.updatedAt).toLocaleString('es-AR') 
 }
 
 document.addEventListener("DOMContentLoaded", function(){
