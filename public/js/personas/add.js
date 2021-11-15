@@ -17,7 +17,7 @@ function postData() {
         apellido: apellido.value,
         dni: dni.value,
         email: email.value,
-        estado: estado.value,
+        estado:'',
         createdAt: '',
         createdBy: '',
         updatedAt: '',

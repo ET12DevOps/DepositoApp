@@ -7,7 +7,7 @@ const auth = require('../../auth')
 router.get ('/personas', auth.isLoggedIn, async(req,res)=>{
 
     await Persona.findAll({
-        attributes:['idPersona','nombre','apellido','dni','email','estado','createdAt','updatedAt']
+        attributes:['idPersona','nombre','apellido','dni','email','createdAt','updatedAt']
     })
         .then(data =>{
             res.send(data);
