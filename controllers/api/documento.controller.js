@@ -39,18 +39,29 @@ router.get('/documentos/:id', auth.isLoggedIn, async (req, res) => {
 router.post('/documentos', auth.isLoggedIn, async (req, res) => {
 
    
-    if (!req.body.name) {
+    if (!req.body.codigo) {
         res.status(400).send({
             message: "Content can not be empty!"
         });
         return;
     }
 
-    
+    if(!req.body.numero){
+        res.status(400).send({
+            message: "Content can not be empty!"
+        })
+    }
+
+    if(!req.body.descripcion){
+        res.status(400).send({
+            message: "Content can not be empty!"
+        })
+    }
     const documento = {
         id: uuidv4(),
-        name: req.body.name,
-        enabled: req.body.enabled,
+        codigo: req.body.codigo,
+        numero: req.body.numero,
+        descripcion: req.body.descripcion,
         createAt: Date.now(),
         createdBy: '',
         updatedAt: Date.now(),
