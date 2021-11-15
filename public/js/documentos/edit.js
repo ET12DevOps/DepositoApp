@@ -1,8 +1,9 @@
 const url = window.location.protocol + "//" + window.location.host + "/";
 
-const id = document.getElementById('documentoId')
-const name = document.getElementById('name')
-const enabled = document.getElementById('enabled')
+const id = document.getElementById('idDocumento')
+const codigo = document.getElementById('codigo')
+const numero = document.getElementById('numero')
+const descripcion = document.getElementById('descripcion')
 const createdAt = document.getElementById('createdAt')
 const updatedAt = document.getElementById('updatedAt')
 
@@ -10,8 +11,9 @@ const getData = async() => {
     const res = await fetch(url + 'api/documentos/' + id.value)
     const data = await res.json()
     
-    name.value = data.name
-    enabled.checked = data.enabled 
+    codigo.value = data.codigo
+    numero.value = data.numero
+    descripcion.value = data.descripcion
     createdAt.value = new Date(data.createdAt).toLocaleString('es-AR')
     updatedAt.value =  new Date(data.updatedAt).toLocaleString('es-AR')
 }
@@ -27,8 +29,9 @@ saveDocumento.addEventListener('click', putData)
 function putData() {
     var data = {
         id: id.value,
-        name: name.value,
-        enabled: enabled.checked,
+        codigo: codigo.value,
+        numero: numero.value,
+        descripcion: descripcion.value,        
         updatedAt: '',
         updatedBy: ''
     }
