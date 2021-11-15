@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../../models')
-const Noconsumible = db.Noconsumible
+const Noconsumible = db.NoConsumible
 const { v4: uuidv4 } = require('uuid')
 const auth = require('../../auth')
 
@@ -58,7 +58,7 @@ router.post('/noconsumibles', auth.isLoggedIn, async (req, res) => {
     };
 
     // Guardo el no consumible en la base de datos
-    Noconsumible.create(noconsumible)
+    noconsumible.create(noconsumible)
         .then(data => {
             res.send(data);
         })
