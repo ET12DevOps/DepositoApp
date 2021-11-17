@@ -48,7 +48,7 @@ router.post('/consumibles', auth.isLoggedIn, async (req, res) => {
 
     // Crear un consumible
     const consumible = {
-        id: uuidv4(),
+        id: 0,
 
         nombre: req.body.nombre,
         codigo: req.body.codigo,
@@ -62,7 +62,7 @@ router.post('/consumibles', auth.isLoggedIn, async (req, res) => {
     };
 
     // Guardo el rol en la base de datos
-    consumible.create(consumible)
+    Consumible.create(consumible)
         .then(data => {
             res.send(data);
         })

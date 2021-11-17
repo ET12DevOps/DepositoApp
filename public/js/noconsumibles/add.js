@@ -1,26 +1,33 @@
 const url = window.location.protocol + "//" + window.location.host + "/";
 
-const id = document.getElementById('noconsumibleId')
-const name = document.getElementById('nombre')
+const id = document.getElementById('consumibleId')
+const nombre = document.getElementById('nombre')
+const codigo = document.getElementById('codigo')
+const detalle = document.getElementById('detalle')
+const existenciaInicial = document.getElementById('existenciaInicial')
+const existenciaActual = document.getElementById('existenciaActual')
 const enabled = document.getElementById('enabled')
-const saveNoConsumible = document.getElementById('save-noconsumible')
+const saveConsumible = document.getElementById('save-noconsumible')
 
-saveNoConsumible.addEventListener('click', postData)
+saveNoconsumible.addEventListener('click', postData)
 
-function postData() {
+function postData() { 
     var data = {
-        id: '',
-        name: name.value,
+      nombre: nombre.value,
+      codigo: codigo.value,
+      detalle: detalle.value,
+      existenciaInicial: existenciaInicial.value,
+      existenciaActual: existenciaActual.value,
         enabled: enabled.checked,
         createdAt: '',
         createdBy: '',
         updatedAt: '',
         updatedBy: ''
-    }
+            }
     
     console.log(data)
 
-    fetch(url + 'api/noconsumibles/', {
+    fetch(url + 'api/noconsumibles', {
         method: 'POST', 
         body: JSON.stringify(data),
         headers:{
