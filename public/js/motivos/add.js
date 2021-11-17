@@ -1,8 +1,8 @@
 const url = window.location.protocol + "//" + window.location.host + "/";
 
-const id = document.getElementById('roleId')
-const name = document.getElementById('name')
-const motivo = document.getElementById('motivo')
+const id = document.getElementById('motivoId')
+const codigo = document.getElementById('codigo')
+const descripcion = document.getElementById('descripcion')
 const saveMotivo = document.getElementById('save-motivo')
 
 saveMotivo.addEventListener('click', postData)
@@ -28,4 +28,6 @@ function postData() {
       .then(res => res.json())
       .catch(error => console.error('Error:', error))
       .then(response => console.log('Success:', response))
+
+      window.location.href = 'http://localhost:3000/motivos'
 }

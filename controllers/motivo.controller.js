@@ -12,7 +12,7 @@ router.get('/motivos', auth.isLoggedIn, (req, res) => {
 router.get('/motivos/:id/edit', auth.isLoggedIn, (req, res) => {
     res.render('./motivos/edit', { 
         title: "Motivo",
-        roleId: req.params.id,
+        motivoId: req.params.id,
         user: req.user
     })
 })
@@ -20,7 +20,7 @@ router.get('/motivos/:id/edit', auth.isLoggedIn, (req, res) => {
 router.get('/motivos/:id/delete', auth.isLoggedIn, (req, res) => {
     res.render('./motivos/delete', { 
         title: "Motivo",
-        roleId: req.params.id,
+        motivoId: req.params.id,
         user: req.user 
     })
 })

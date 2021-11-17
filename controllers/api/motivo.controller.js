@@ -39,7 +39,7 @@ router.get('/motivos/:id', auth.isLoggedIn, async (req, res) => {
 router.post('/motivos', auth.isLoggedIn, async (req, res) => {
 
     
-    if (!req.body.name) {
+    if (!req.body.codigo) {
         res.status(400).send({
             message: "Content can not be empty!"
         });
