@@ -9,7 +9,7 @@ const getData = async () => {
         const response = await fetch(url + 'api/unidades')
 
         const userData = await response.json()
-        console.log(userData)
+
         let progresBar = document.getElementById("bar")
 
         progresBar.style.display = "none"
@@ -31,16 +31,7 @@ const getData = async () => {
                 { select: 1 },
                 { select: 2, hidden: true },
                 { select: 3, hidden: true },
-                // {
-                //     select: 1, type: "date", render: function (data, cell, row) {
-                //         return new Date(data).toLocaleString('es-AR')
-                //     }
-                // },
-                // {
-                //     select: 3, render: function (data, cell, row) {
-                //         return new Date(data).toLocaleString('es-AR')
-                //     }
-                // },
+                
                 {
                     select: 4, sortable: false, render: function (data, cell, row) {
                         var editButton = `<a href="/unidades/${userData[row.dataIndex].idUnidad}/edit" idUnidad="edit-${userData[row.dataIndex].idUnidad}" class="mr-2 has-text-info"><i class="fad fa-pencil"></i></a>`
