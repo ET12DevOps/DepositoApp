@@ -82,13 +82,13 @@ router.post('/documentos', auth.isLoggedIn, async (req, res) => {
 })
 
 router.put('/documentos/:id', auth.isLoggedIn, async (req, res) => {
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
 
     req.body.updatedAt = Date.now()
 
-    
+    console.log(req.body)
     Documento.update(req.body, {
-        where: { id: id }
+        where: { idDocumento: id }
     })
         .then(num => {
             if (num == 1) {
@@ -110,10 +110,10 @@ router.put('/documentos/:id', auth.isLoggedIn, async (req, res) => {
 
 router.delete('/documentos/:id', auth.isLoggedIn, async (req, res) => {
 
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
 
     Documento.destroy({
-        where: { id: id }
+        where: { idDocumento: id }
     })
         .then(num => {
             if (num == 1) {

@@ -19,8 +19,6 @@ function postData() {
         updatedAt: '',
         updatedBy: ''
     }
-    
-    console.log(data)
 
     fetch(url + 'api/documentos/', {
         method: 'POST', 

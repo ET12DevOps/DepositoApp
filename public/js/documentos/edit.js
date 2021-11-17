@@ -14,8 +14,6 @@ const getData = async() => {
     codigo.value = data.codigo
     numero.value = data.numero
     descripcion.value = data.descripcion
-    createdAt.value = new Date(data.createdAt).toLocaleString('es-AR')
-    updatedAt.value =  new Date(data.updatedAt).toLocaleString('es-AR')
 }
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -28,7 +26,7 @@ saveDocumento.addEventListener('click', putData)
 
 function putData() {
     var data = {
-        id: id.value,
+        idDocumento: parseInt(id.value),
         codigo: codigo.value,
         numero: numero.value,
         descripcion: descripcion.value,        
@@ -48,4 +46,6 @@ function putData() {
       .then(res => res.json())
       .catch(error => console.error('Error:', error))
       .then(response => console.log('Success:', response))
+
+      window.location.href = url + "documentos";
 }

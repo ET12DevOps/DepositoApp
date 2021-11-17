@@ -7,9 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const getData = async () => {
     try {
         const response = await fetch(url + 'api/documentos')
-
         const userData = await response.json()
-        console.log(userData)
         let progresBar = document.getElementById("bar")
 
         progresBar.style.display = "none"
@@ -34,9 +32,9 @@ const getData = async () => {
                 { select: 4, hidden: true },
                 {
                     select: 5, sortable: false, render: function (data, cell, row) {
-                        var editButton = `<a href="/documentos/${userData[row.dataIndex].id}/edit" id="edit-${userData[row.dataIndex].id}" class="mr-2 has-text-info"><i class="fad fa-pencil"></i></a>`
+                        var editButton = `<a href="/documentos/${userData[row.dataIndex].idDocumento}/edit" id="edit-${userData[row.dataIndex].idDocumento}" class="mr-2 has-text-info"><i class="fad fa-pencil"></i></a>`
 
-                        var deleteButton = `<a href="/documentos/${userData[row.dataIndex].id}/delete" id="delete-${userData[row.dataIndex].id}" class="has-text-danger"><i class="fad fa-trash-alt"></i></a>`
+                        var deleteButton = `<a href="/documentos/${userData[row.dataIndex].idDocumento}/delete" id="delete-${userData[row.dataIndex].idDocumento}" class="has-text-danger"><i class="fad fa-trash-alt"></i></a>`
 
                         return '<div class="has-text-centered"> ' + editButton + deleteButton + '</div>';
                     }
