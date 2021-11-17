@@ -7,7 +7,7 @@ const auth = require('../../auth')
 router.get ('/personas', auth.isLoggedIn, async(req,res)=>{
 
     await Persona.findAll({
-        attributes:['idPersona','nombre','apellido','dni','email','createdAt','updatedAt']
+        attributes:['idPersona','nombre','apellido','dni','email','estado','createdAt','updatedAt']
     })
         .then(data =>{
             res.send(data);
@@ -35,16 +35,16 @@ router.get ('/personas', auth.isLoggedIn, async(req,res)=>{
             });
     })
 
-    router.post('/Personas', auth.isLoggedIn, async (req, res) => {
+    router.post('/personas', auth.isLoggedIn, async (req, res) => {
 
-        if (!req.body.name) {
+        if (!req.body.nombre) {
             res.status(400).send({
                 message: "Content can not be empty!"
             });
             return;
         }
         const persona = {
-            idPersona: (0),
+            idPersona: 0,
             nombre: req.body.nombre,
             apellido: req.body.apellido,
             dni: req.body.dni,
@@ -55,11 +55,15 @@ router.get ('/personas', auth.isLoggedIn, async(req,res)=>{
             updatedAt: Date.now(),
             updatedBy: ''
         };
+console.log(persona)
+
         Persona.create(persona)
         .then(data => {
+            console.log(data)
             res.send(data);
         })
         .catch(err => {
+            console.log(err)
             res.status(500).send({
                 message:
                     err.message || "Some error occurred while creating the Personas."
@@ -73,7 +77,7 @@ router.put('/personas/:id', auth.isLoggedIn, async (req, res) => {
     req.body.updatedAt = Date.now()
 
     Persona.update(req.body, {
-        where: { id: id }
+        where: { idPersona: id }
     })
         .then(num => {
             if (num == 1) {
@@ -98,7 +102,7 @@ router.delete('/personas/:id', auth.isLoggedIn, async (req, res) => {
     const id = req.params.id;
 
     Persona.destroy({
-        where: { id: id }
+        where: { idPersona: id }
     })
         .then(num => {
             if (num == 1) {

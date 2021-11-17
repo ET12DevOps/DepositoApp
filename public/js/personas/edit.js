@@ -1,8 +1,11 @@
 const url = window.location.protocol + "//" + window.location.host + "/";
 
-const id = document.getElementById('personaId')
-const name = document.getElementById('name')
-const enabled = document.getElementById('enabled')
+const id = document.getElementById('idPersona')
+const nombre = document.getElementById('nombre')
+const apellido = document.getElementById('apellido')
+const dni = document.getElementById('dni')
+const email = document.getElementById('email')
+const estado = document.getElementById('enabled')
 const createdAt = document.getElementById('createdAt')
 const updatedAt = document.getElementById('updatedAt')
 
@@ -10,27 +13,31 @@ const getData = async() => {
     const res = await fetch(url + 'api/personas/' + id.value)
     const data = await res.json()
     
-    name.value = data.name
-    enabled.checked = data.enabled 
-    createdAt.value = new Date(data.createdAt).toLocaleString('es-AR')
-    updatedAt.value =  new Date(data.updatedAt).toLocaleString('es-AR')
+    nombre.value = data.nombre
+    apellido.value = data.apellido
+    dni.value = parseInt(data.dni)
+    email.value = data.email
+    enabled.checked = data.estado
 }
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function() {
     getData()
 });
 
-const savePersona = document.getElementById('save-personas')
+const savePersona = document.getElementById('save-persona')
 
 savePersona.addEventListener('click', putData)
 
 function putData() {
     var data = {
-        id: id.value,
-        name: name.value,
-        enabled: enabled.checked,
+        idPersona: parseInt(id.value),
+        nombre: nombre.value,
+        apellido: apellido.value,
+        dni: parseInt(dni.value),
+        email: email.value,
+        estado: estado.checked,
         updatedAt: '',
-        updatedBy: ''
+        updatedBy:'',
     }
     
     console.log(data)
@@ -39,10 +46,10 @@ function putData() {
         method: 'PUT', 
         body: JSON.stringify(data),
         headers:{
-          'Content-Type': 'application/json'
+        'Content-Type': 'application/json'
         }
-      })
-      .then(res => res.json())
-      .catch(error => console.error('Error:', error))
-      .then(response => console.log('Success:', response))
+    })
+    .then(res => res.json())
+    .catch(error => console.error('Error:', error))
+    .then(response => console.log('Success:', response))
 }

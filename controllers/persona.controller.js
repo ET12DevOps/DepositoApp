@@ -12,7 +12,7 @@ router.get('/personas', auth.isLoggedIn, (req, res) => {
 router.get('/personas/:id/edit', auth.isLoggedIn, (req, res) => {
     res.render('./personas/edit', { 
         title: "Persona",
-        roleId: req.params.id,
+        idPersona: req.params.id,
         user: req.user
     })
 })
@@ -20,7 +20,7 @@ router.get('/personas/:id/edit', auth.isLoggedIn, (req, res) => {
 router.get('/personas/:id/delete', auth.isLoggedIn, (req, res) => {
     res.render('./personas/delete', { 
         title: "Persona",
-        roleId: req.params.id,
+        idPersona: req.params.id,
         user: req.user 
     })
 })
