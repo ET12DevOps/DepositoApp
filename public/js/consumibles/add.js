@@ -1,22 +1,25 @@
 const url = window.location.protocol + "//" + window.location.host + "/";
 
 const id = document.getElementById('consumibleId')
-const name = document.getElementById('name')
+const nombre = document.getElementById('nombre')
 const enabled = document.getElementById('enabled')
 const saveConsumible = document.getElementById('save-consumible')
 
 saveConsumible.addEventListener('click', postData)
 
-function postData() {
+function postData() { 
     var data = {
-        id: '',
-        name: name.value,
+      nombre: req.body.nombre,
+      codigo: req.body.codigo,
+      detalle: req.body.detalle,
+      existenciaInicial: req.body.existenciaInicial,
+      existenciaActual: req.body.existenciaActual,
         enabled: enabled.checked,
         createdAt: '',
         createdBy: '',
         updatedAt: '',
         updatedBy: ''
-    }
+            }
     
     console.log(data)
 

@@ -1,7 +1,7 @@
 const url = window.location.protocol + "//" + window.location.host + "/";
 
 const id = document.getElementById('noconsumibleId')
-const name = document.getElementById('name')
+const nombre = document.getElementById('nombre')
 const enabled = document.getElementById('enabled')
 const createdAt = document.getElementById('createdAt')
 const updatedAt = document.getElementById('updatedAt')
@@ -13,16 +13,16 @@ const getData = async() => {
     name.value = data.name
     enabled.checked = data.enabled 
     createdAt.value = new Date(data.createdAt).toLocaleString('es-AR')
-    updatedAt.value =  new Date(data.updatedAt).toLocaleString('es-AR')
+    updatedAt.value =  new Date(data.updatedAt).toLocaleString('es-AR') 
 }
 
 document.addEventListener("DOMContentLoaded", function(){
     getData()
 });
 
-const saveNoConsumible = document.getElementById('save-noconsumibles')
+const saveConsumible = document.getElementById('save-noconsumibles')
 
-saveNoConsumible.addEventListener('click', putData)
+saveConsumible.addEventListener('click', putData)
 
 function putData() {
     var data = {
@@ -39,10 +39,10 @@ function putData() {
         method: 'PUT', 
         body: JSON.stringify(data),
         headers:{
-          'Content-Type': 'application/json'
+        'Content-Type': 'application/json'
         }
-      })
-      .then(res => res.json())
-      .catch(error => console.error('Error:', error))
-      .then(response => console.log('Success:', response))
+    })
+    .then(res => res.json())
+    .catch(error => console.error('Error:', error))
+    .then(response => console.log('Success:', response))
 }
