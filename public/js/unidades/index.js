@@ -43,9 +43,9 @@ const getData = async () => {
                 // },
                 {
                     select: 4, sortable: false, render: function (data, cell, row) {
-                        var editButton = `<a href="/unidades/${userData[row.dataIndex].id}/edit" id="edit-${userData[row.dataIndex].id}" class="mr-2 has-text-info"><i class="fad fa-pencil"></i></a>`
+                        var editButton = `<a href="/unidades/${userData[row.dataIndex].idUnidad}/edit" idUnidad="edit-${userData[row.dataIndex].idUnidad}" class="mr-2 has-text-info"><i class="fad fa-pencil"></i></a>`
 
-                        var deleteButton = `<a href="/unidades/${userData[row.dataIndex].id}/delete" id="delete-${userData[row.dataIndex].id}" class="has-text-danger"><i class="fad fa-trash-alt"></i></a>`
+                        var deleteButton = `<a href="/unidades/${userData[row.dataIndex].idUnidad}/delete" idUnidad="delete-${userData[row.dataIndex].idUnidad}" class="has-text-danger"><i class="fad fa-trash-alt"></i></a>`
 
                         return '<div class="has-text-centered"> ' + editButton + deleteButton + '</div>';
                     }
