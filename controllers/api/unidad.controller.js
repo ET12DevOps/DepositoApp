@@ -24,7 +24,7 @@ router.get('/unidades/:id', auth.isLoggedIn, async (req, res) => {
 
     const id = req.params.id;
 
-    await Role.findByPk(id)
+    await Unidad.findByPk(id)
         .then(data => {
             res.send(data);
         })
@@ -69,7 +69,7 @@ router.put('/unidades/:id', auth.isLoggedIn, async (req, res) => {
     req.body.updatedAt = Date.now()
 
     Unidad.update(req.body, {
-        where: { id: id }
+        where: { idUnidad: id }
     })
         .then(num => {
             if (num == 1) {
@@ -95,7 +95,7 @@ router.delete('/unidades/:id', auth.isLoggedIn, async (req, res) => {
     const id = req.params.id;
 
     Unidad.destroy({
-        where: { id: id }
+        where: { idUnidad: id }
     })
         .then(num => {
             if (num == 1) {
