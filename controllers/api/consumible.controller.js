@@ -8,7 +8,7 @@ const auth = require('../../auth')
 router.get('/consumibles', auth.isLoggedIn, async (req, res) => {
 
     await Consumible.findAll({
-        attributes: ['idConsumible','codigo','nombre','existenciaInicial','existenciaActual','detalle','IdUnidad', 'createdAt', 'updatedAt']
+        attributes: ['idConsumible','nombre','codigo','detalle','existenciaInicial','existenciaActual','IdUnidad', 'createdAt', 'updatedAt']
     })
         .then(data => {
             res.send(data);
@@ -39,7 +39,7 @@ router.get('/consumibles/:id', auth.isLoggedIn, async (req, res) => {
 router.post('/consumibles', auth.isLoggedIn, async (req, res) => {
 
     // Validar el request (si no es vacio el nombre)
-    if (!req.body.name) {
+    if (!req.body.nombre) {
         res.status(400).send({
             message: "Content can not be empty!"
         });
@@ -48,9 +48,13 @@ router.post('/consumibles', auth.isLoggedIn, async (req, res) => {
 
     // Crear un consumible
     const consumible = {
-        id: uuidv4(),
-        name: req.body.name,
-        enabled: req.body.enabled,
+        id: 0,
+
+        nombre: req.body.nombre,
+        codigo: req.body.codigo,
+        detalle: req.body.detalle,
+        existenciaInicial: req.body.existenciaInicial,
+        existenciaActual: req.body.existenciaActual,
         createAt: Date.now(),
         createdBy: '',
         updatedAt: Date.now(),
@@ -58,7 +62,7 @@ router.post('/consumibles', auth.isLoggedIn, async (req, res) => {
     };
 
     // Guardo el rol en la base de datos
-    consumible.create(consumible)
+    Consumible.create(consumible)
         .then(data => {
             res.send(data);
         })

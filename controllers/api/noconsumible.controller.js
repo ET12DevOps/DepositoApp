@@ -47,7 +47,7 @@ router.post('/noconsumibles', auth.isLoggedIn, async (req, res) => {
     }
 
     // Crear un no consumible
-    const noconsumible = {
+    const noconsumible = { 
         id: uuidv4(),
         name: req.body.name,
         enabled: req.body.enabled,

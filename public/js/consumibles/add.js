@@ -1,26 +1,34 @@
 const url = window.location.protocol + "//" + window.location.host + "/";
 
 const id = document.getElementById('consumibleId')
-const name = document.getElementById('name')
+const nombre = document.getElementById('nombre')
+const codigo = document.getElementById('codigo')
+const detalle = document.getElementById('detalle')
+const existenciaInicial = document.getElementById('existenciaInicial')
+const existenciaActual = document.getElementById('existenciaActual')
 const enabled = document.getElementById('enabled')
 const saveConsumible = document.getElementById('save-consumible')
 
 saveConsumible.addEventListener('click', postData)
 
-function postData() {
+function postData() { 
     var data = {
-        id: '',
-        name: name.value,
+      id: 0,
+      nombre: nombre.value,
+      codigo: codigo.value,
+      detalle: detalle.value,
+      existenciaInicial: existenciaInicial.value,
+      existenciaActual: existenciaActual.value,
         enabled: enabled.checked,
         createdAt: '',
         createdBy: '',
         updatedAt: '',
         updatedBy: ''
-    }
+            }
     
     console.log(data)
 
-    fetch(url + 'api/consumibles/', {
+    fetch(url + 'api/consumibles', {
         method: 'POST', 
         body: JSON.stringify(data),
         headers:{
@@ -30,4 +38,6 @@ function postData() {
       .then(res => res.json())
       .catch(error => console.error('Error:', error))
       .then(response => console.log('Success:', response))
+
+      window.location.ref= url + '/Consumibles'
 }
