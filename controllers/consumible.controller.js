@@ -5,7 +5,7 @@ const auth = require('../auth')
 router.get('/consumibles', auth.isLoggedIn, (req, res) => {
     res.render('./consumibles/index', { 
         title: "Consumibles",
-        user: req.user
+        user: req.user  
     })
 })
 
