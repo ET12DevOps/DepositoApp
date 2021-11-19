@@ -1,26 +1,32 @@
 const url = window.location.protocol + "//" + window.location.host + "/";
 
-const id = document.getElementById('PersonaId')
-const name = document.getElementById('name')
-const enabled = document.getElementById('enabled')
-const savePersona = document.getElementById('save-Persona')
+const id = document.getElementById('idPersona')
+const nombre = document.getElementById('nombre')
+const apellido = document.getElementById('apellido')
+const dni = document.getElementById('dni')
+const email = document.getElementById('email')
+const estado = document.getElementById('enabled')
+const savePersona = document.getElementById('save-persona')
 
 savePersona.addEventListener('click', postData)
 
 function postData() {
     var data = {
-        id: '',
-        name: name.value,
-        enabled: enabled.checked,
+        idPersona: 0,
+        nombre: nombre.value,
+        apellido: apellido.value,
+        dni: parseInt(dni.value),
+        email: email.value,
+        estado: estado.checked,
         createdAt: '',
         createdBy: '',
         updatedAt: '',
         updatedBy: ''
-    }
-    
+    } 
+
     console.log(data)
 
-    fetch(url + 'api/personas/', {
+    fetch(url + 'api/personas', {
         method: 'POST', 
         body: JSON.stringify(data),
         headers:{
