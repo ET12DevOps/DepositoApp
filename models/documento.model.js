@@ -5,11 +5,12 @@ module.exports = (sequelize, DataTypes) => {
     idDocumento: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      allowNull: false
+      allowNull: false,
+      autoIncrement: true
     },
     codigo: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     numero: {
       type: DataTypes.INTEGER

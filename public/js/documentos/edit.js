@@ -1,8 +1,9 @@
 const url = window.location.protocol + "//" + window.location.host + "/";
 
-const id = document.getElementById('documentoId')
-const name = document.getElementById('name')
-const enabled = document.getElementById('enabled')
+const id = document.getElementById('idDocumento')
+const codigo = document.getElementById('codigo')
+const numero = document.getElementById('numero')
+const descripcion = document.getElementById('descripcion')
 const createdAt = document.getElementById('createdAt')
 const updatedAt = document.getElementById('updatedAt')
 
@@ -10,10 +11,9 @@ const getData = async() => {
     const res = await fetch(url + 'api/documentos/' + id.value)
     const data = await res.json()
     
-    name.value = data.name
-    enabled.checked = data.enabled 
-    createdAt.value = new Date(data.createdAt).toLocaleString('es-AR')
-    updatedAt.value =  new Date(data.updatedAt).toLocaleString('es-AR')
+    codigo.value = data.codigo
+    numero.value = data.numero
+    descripcion.value = data.descripcion
 }
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -26,9 +26,10 @@ saveDocumento.addEventListener('click', putData)
 
 function putData() {
     var data = {
-        id: id.value,
-        name: name.value,
-        enabled: enabled.checked,
+        idDocumento: parseInt(id.value),
+        codigo: codigo.value,
+        numero: numero.value,
+        descripcion: descripcion.value,        
         updatedAt: '',
         updatedBy: ''
     }
@@ -45,4 +46,6 @@ function putData() {
       .then(res => res.json())
       .catch(error => console.error('Error:', error))
       .then(response => console.log('Success:', response))
+
+      window.location.href = url + "documentos";
 }

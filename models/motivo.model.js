@@ -5,7 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     idMotivo: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      allowNull: false
+      allowNull: false,
+      autoIncrement: true
     },
     codigo: {
       type: DataTypes.STRING,
