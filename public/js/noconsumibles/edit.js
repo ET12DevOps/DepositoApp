@@ -1,7 +1,11 @@
 const url = window.location.protocol + "//" + window.location.host + "/";
 
 const id = document.getElementById('noconsumibleId')
-const name = document.getElementById('name')
+const nombre = document.getElementById('nombre')
+const codigo = document.getElementById('codigo')
+const detalle = document.getElementById('detalle')
+const existenciaInicial = document.getElementById('existenciaInicial')
+const existenciaActual = document.getElementById('existenciaActual')
 const enabled = document.getElementById('enabled')
 const createdAt = document.getElementById('createdAt')
 const updatedAt = document.getElementById('updatedAt')
@@ -13,7 +17,7 @@ const getData = async() => {
     name.value = data.name
     enabled.checked = data.enabled 
     createdAt.value = new Date(data.createdAt).toLocaleString('es-AR')
-    updatedAt.value =  new Date(data.updatedAt).toLocaleString('es-AR')
+    updatedAt.value =  new Date(data.updatedAt).toLocaleString('es-AR') 
 }
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -27,10 +31,16 @@ saveNoConsumible.addEventListener('click', putData)
 function putData() {
     var data = {
         id: id.value,
-        name: name.value,
-        enabled: enabled.checked,
-        updatedAt: '',
-        updatedBy: ''
+        nombre: nombre.value,
+        codigo: codigo.value,
+        detalle: detalle.value,
+        existenciaInicial: existenciaInicial.value,
+        existenciaActual: existenciaActual.value,
+          enabled: enabled.checked,
+          createdAt: '',
+          createdBy: '',
+          updatedAt: '',
+          updatedBy: '',
     }
     
     console.log(data)

@@ -1,19 +1,16 @@
 const url = window.location.protocol + "//" + window.location.host + "/";
 
-const id = document.getElementById('unidadId')
-const name = document.getElementById('name')
-const enabled = document.getElementById('enabled')
-const createdAt = document.getElementById('createdAt')
-const updatedAt = document.getElementById('updatedAt')
+const id = document.getElementById('idUnidad')
+const nombre = document.getElementById('nombre')
+const referencia = document.getElementById('referencia')
 
 const getData = async() => {
+    console.log(id.value)
     const res = await fetch(url + 'api/unidades/' + id.value)
     const data = await res.json()
-    
-    name.value = data.name
-    enabled.checked = data.enabled 
-    createdAt.value = new Date(data.createdAt).toLocaleString('es-AR')
-    updatedAt.value =  new Date(data.updatedAt).toLocaleString('es-AR')
+    console.log(data)
+    nombre.value = data.nombre
+    referencia.value = data.referencia 
 }
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -27,8 +24,8 @@ saveUnidad.addEventListener('click', putData)
 function putData() {
     var data = {
         id: id.value,
-        name: name.value,
-        enabled: enabled.checked,
+        nombre: nombre.value,
+        referencia: referencia.value,
         updatedAt: '',
         updatedBy: ''
     }
