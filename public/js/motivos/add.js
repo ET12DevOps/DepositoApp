@@ -1,8 +1,8 @@
 const url = window.location.protocol + "//" + window.location.host + "/";
 
-const id = document.getElementById('roleId')
-const name = document.getElementById('name')
-const motivo = document.getElementById('motivo')
+const id = document.getElementById('motivoId')
+const codigo = document.getElementById('codigo')
+const descripcion = document.getElementById('descripcion')
 const saveMotivo = document.getElementById('save-motivo')
 
 saveMotivo.addEventListener('click', postData)
@@ -10,13 +10,11 @@ saveMotivo.addEventListener('click', postData)
 function postData() {
     var data = {
         id: '',
-        name: name.value,
-        motivo: motivo.value,
+        codigo: codigo.value,
+        descripcion: descripcion.value,
         createdAt: '',
         createdBy: '',
     }
-    
-    console.log(data)
 
     fetch(url + 'api/motivos/', {
         method: 'POST', 
@@ -28,4 +26,6 @@ function postData() {
       .then(res => res.json())
       .catch(error => console.error('Error:', error))
       .then(response => console.log('Success:', response))
+
+      window.location.href = url+'motivos'
 }
