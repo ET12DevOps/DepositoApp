@@ -9,7 +9,6 @@ const getData = async () => {
         const response = await fetch(url + 'api/motivos')
 
         const userData = await response.json()
-        console.log(userData)
         let progresBar = document.getElementById("bar")
 
         progresBar.style.display = "none"

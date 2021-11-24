@@ -16,7 +16,7 @@ router.get('/motivos', auth.isLoggedIn, async (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while retrieving Roles."
+                    err.message || "Some error occurred while retrieving Motivos."
             });
         });
 })
@@ -77,7 +77,7 @@ router.put('/motivos/:id', auth.isLoggedIn, async (req, res) => {
 
     
     Motivo.update(req.body, {
-        where: { id: id }
+        where: { idMotivo: id }
     })
         .then(num => {
             if (num == 1) {
@@ -102,7 +102,7 @@ router.delete('/motivos/:id', auth.isLoggedIn, async (req, res) => {
     const id = req.params.id;
 
     Motivo.destroy({
-        where: { id: id }
+        where: { idMotivo: id }
     })
         .then(num => {
             if (num == 1) {

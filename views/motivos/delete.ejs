@@ -23,35 +23,30 @@
                 <div class="field">
                     <label class="label">IDENTIFICADOR</label>
                     <div class="control">
-                        <input class="input" type="text" value="<%= roleId %>" name="id" id="roleId" disabled>
+                        <input class="input" type="text" value="<%= motivoId %>" name="id" id="motivoId" disabled>
                     </div>
                 </div>
                 <div class="field">
-                    <label class="label">NOMBRE</label>
+                    <label class="label">CODIGO</label>
                     <div class="control">
-                        <input class="input" type="text" name="name" id="name" disabled>
+                        <input class="input" type="text" name="codigo" id="codigo" disabled>
                     </div>
                 </div>
                 <div class="field">
-                    <input id="enabled" type="checkbox" name="enabled" class="switch is-outlined is-info is-rtl"
-                        disabled>
-                    <label for="enabled" class="label is-small">MOTIVO</label>
-                </div>
-                <div class="field">
-                    <label class="label">FECHA</label>
+                    <label class="label">DESCRIPCION</label>
                     <div class="control">
-                        <input class="input" type="text" name="createdAt" id="createdAt" disabled>
+                        <input id="descripcion" type="text" name="descripcion" class="input" disabled>
                     </div>
                 </div>
                 <div class="mt-6">
-                    <h3 class="subtitle is-5">¿Desea eliminar el rol?</h3>
-                    <button id="save-role" type="submit" class="button is-outlined is-danger">Eliminar</button>
+                    <h3 class="subtitle is-5">¿Desea eliminar el motivo?</h3>
+                    <button id="save-motivo" type="submit" class="button is-outlined is-danger">Eliminar</button>
                     <a class="button is-outlined" href="/motivos">Cancelar</a>
                 </div>
             </div>
         </div>
     </section>
-    <script src="../../public/js/motivos/edit.js"></script>
+    <!-- <script src="../../public/js/motivos/edit.js"></script> -->
     <script src="../../public/js/motivos/delete.js"></script>
 </body>
 

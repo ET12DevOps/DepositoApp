@@ -15,8 +15,6 @@ function postData() {
         createdAt: '',
         createdBy: '',
     }
-    
-    console.log(data)
 
     fetch(url + 'api/motivos/', {
         method: 'POST', 
@@ -29,5 +27,5 @@ function postData() {
       .catch(error => console.error('Error:', error))
       .then(response => console.log('Success:', response))
 
-      window.location.href = 'http://localhost:3000/motivos'
+      window.location.href = url+'motivos'
 }

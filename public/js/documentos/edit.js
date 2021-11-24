@@ -40,12 +40,12 @@ function putData() {
         method: 'PUT', 
         body: JSON.stringify(data),
         headers:{
-          'Content-Type': 'application/json'
+        'Content-Type': 'application/json'
         }
-      })
-      .then(res => res.json())
-      .catch(error => console.error('Error:', error))
-      .then(response => console.log('Success:', response))
+    })
+    .then(res => res.json())
+    .catch(error => console.error('Error:', error))
+    .then(response => console.log('Success:', response))
 
-      window.location.href = url + "documentos";
+    window.location.href = url + "documentos";
 }
