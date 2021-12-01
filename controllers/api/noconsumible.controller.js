@@ -1,14 +1,14 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../../models')
-const Noconsumible = db.NoConsumible
+const Consumible = db.Consumible
 const { v4: uuidv4 } = require('uuid')
 const auth = require('../../auth')
 
 router.get('/noconsumibles', auth.isLoggedIn, async (req, res) => {
 
-    await Noconsumible.findAll({
-        attributes: ['idNoConsumible', 'codigo', 'nombre','detalle','IdUnidad','existenciaInicial','existenciaActual', 'createdAt', 'updatedAt']
+    await Consumible.findAll({
+        attributes: ['idNoconsumible','nombre','codigo','detalle','existenciaInicial','existenciaActual','IdUnidad', 'createdAt', 'updatedAt']
     })
         .then(data => {
             res.send(data);
@@ -16,7 +16,7 @@ router.get('/noconsumibles', auth.isLoggedIn, async (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while retrieving No consumibles."
+                    err.message || "Some error occurred while retrieving Roles."
             });
         });
 })
@@ -39,7 +39,7 @@ router.get('/noconsumibles/:id', auth.isLoggedIn, async (req, res) => {
 router.post('/noconsumibles', auth.isLoggedIn, async (req, res) => {
 
     // Validar el request (si no es vacio el nombre)
-    if (!req.body.name) {
+    if (!req.body.nombre) {
         res.status(400).send({
             message: "Content can not be empty!"
         });
@@ -47,25 +47,29 @@ router.post('/noconsumibles', auth.isLoggedIn, async (req, res) => {
     }
 
     // Crear un no consumible
-    const noconsumible = { 
-        id: uuidv4(),
-        name: req.body.name,
-        enabled: req.body.enabled,
+    const Noconsumible = {
+        id: 0,
+
+        nombre: req.body.nombre,
+        codigo: req.body.codigo,
+        detalle: req.body.detalle,
+        existenciaInicial: req.body.existenciaInicial,
+        existenciaActual: req.body.existenciaActual,
         createAt: Date.now(),
         createdBy: '',
         updatedAt: Date.now(),
         updatedBy: ''
     };
 
-    // Guardo el no consumible en la base de datos
-    noconsumible.create(noconsumible)
+    // Guardo el rol en la base de datos
+    Noconsumible.create(noconsumible)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the No consumibles."
+                    err.message || "Some error occurred while creating the Consumibles."
             });
         });
 })
@@ -75,7 +79,7 @@ router.put('/noconsumibles/:id', auth.isLoggedIn, async (req, res) => {
 
     req.body.updatedAt = Date.now()
 
-    //actualizo la informacion del objeto no consumible
+    //actualizo la informacion del objeto consumible
     Noconsumible.update(req.body, {
         where: { id: id }
     })
@@ -86,7 +90,7 @@ router.put('/noconsumibles/:id', auth.isLoggedIn, async (req, res) => {
                 });
             } else {
                 res.send({
-                    message: `Cannot update No consumible with id=${id}. Maybe Role was not found or req.body is empty!`
+                    message: `Cannot update Role with id=${id}. Maybe Role was not found or req.body is empty!`
                 });
             }
         })
@@ -111,7 +115,7 @@ router.delete('/noconsumibles/:id', auth.isLoggedIn, async (req, res) => {
                 });
             } else {
                 res.send({
-                    message: `Cannot delete Role with id=${id}. Maybe No consumible was not found!`
+                    message: `Cannot delete Role with id=${id}. Maybe Role was not found!`
                 });
             }
         })
