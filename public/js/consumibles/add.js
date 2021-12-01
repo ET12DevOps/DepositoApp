@@ -8,6 +8,31 @@ const existenciaInicial = document.getElementById('existenciaInicial')
 const existenciaActual = document.getElementById('existenciaActual')
 const enabled = document.getElementById('enabled')
 const saveConsumible = document.getElementById('save-consumible')
+const unidades = document.getElementById("unidades")
+
+document.addEventListener('DOMContentLoaded', () => {
+  getUnidades()
+})
+
+const getUnidades = async () => {
+  try {
+    const response = await fetch(url + 'api/unidades')
+    const unidadesJson = await response.json()
+    console.log(unidadesJson)
+    var opcion = document.createElement('option');
+    opcion.value = 0;
+    opcion.innerHTML = '';
+    unidades.appendChild(opcion);
+    for (var i = 0; i < unidadesJson.length; i++){
+      var opcion = document.createElement('option');
+      opcion.value = unidadesJson[i].idUnidad;
+      opcion.innerHTML = unidadesJson[i].nombre;
+      unidades.appendChild(opcion);
+    }
+  } catch(error) {
+    console.error(error)
+  }
+}
 
 saveConsumible.addEventListener('click', postData)
 
@@ -23,12 +48,14 @@ function postData() {
         createdAt: '',
         createdBy: '',
         updatedAt: '',
-        updatedBy: ''
-            }
+        updatedBy: '',
+        idUnidad: parseInt(unidades.options[unidades.selectedIndex].value)
+    }
+    
     
     console.log(data)
 
-    fetch(url + 'api/consumibles', {
+    fetch(url + 'api/consumibles',{
         method: 'POST', 
         body: JSON.stringify(data),
         headers:{

@@ -53,6 +53,8 @@ db.PrestamoNoConsumible = require("./prestamo-no-consumible.model")(sequelize, S
 db.Prestamo = require("./prestamo.model")(sequelize, Sequelize);
 db.Unidad = require("./unidad.model")(sequelize, Sequelize);
 
+db.Consumible.associate({Unidad})
+
 db.Documento.belongsToMany(db.Motivo, {
   through: "motivoDocumento",
   as: "DocumentoMotivo",

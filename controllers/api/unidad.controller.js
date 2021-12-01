@@ -4,7 +4,8 @@ const db = require('../../models')
 const Unidad = db.Unidad
 const auth = require('../../auth')
 
-router.get('/unidades', auth.isLoggedIn, async (req, res) => {
+//auth.isLoggedIn
+router.get('/unidades', async (req, res) => {
 
     await Unidad.findAll({
         attributes: ['idUnidad', 'nombre', 'referencia', 'createdAt', 'updatedAt']
