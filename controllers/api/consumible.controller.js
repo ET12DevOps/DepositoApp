@@ -2,13 +2,18 @@ const express = require('express')
 const router = express.Router()
 const db = require('../../models')
 const Consumible = db.Consumible
+const Unidad = db.Unidad
 const { v4: uuidv4 } = require('uuid')
 const auth = require('../../auth')
 
-router.get('/consumibles', auth.isLoggedIn, async (req, res) => {
+router.get('/consumibles', async (req, res) => {
 
     await Consumible.findAll({
-        attributes: ['idConsumible','nombre','codigo','detalle','existenciaInicial','existenciaActual','IdUnidad', 'createdAt', 'updatedAt']
+        attributes: ['idConsumible','nombre','codigo','detalle','existenciaInicial','existenciaActual', 'createdAt', 'updatedAt','idUnidad'],
+        include: {
+            model: Unidad, 
+            as: 'unidad'
+        }
     })
         .then(data => {
             res.send(data);
@@ -58,7 +63,9 @@ router.post('/consumibles', auth.isLoggedIn, async (req, res) => {
         createAt: Date.now(),
         createdBy: '',
         updatedAt: Date.now(),
-        updatedBy: ''
+        updatedBy: '',
+        idUnidad: req.body.idUnidad
+
     };
 
     // Guardo el rol en la base de datos

@@ -25,13 +25,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING
     },
     idUnidad: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
+      type: DataTypes.INTEGER,      
       allowNull: false
     }
   }, {
       freezeTableName: true
-  });
-
+  }); 
+  
   return Consumible;
 };
