@@ -1,7 +1,5 @@
 'use strict';
 
-const { Association } = require("sequelize/types");
-
 module.exports = (sequelize, DataTypes) => {
   const Consumible = sequelize.define('consumible', {
     idConsumible: {
@@ -32,13 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
       freezeTableName: true
-  });
-
-  Consumible.association = function(models){
-     Consumible.hasOne(models.Unidad,{
-       foreignKey: 'idUnidad'
-     })
-  };
-
+  }); 
+  
   return Consumible;
 };

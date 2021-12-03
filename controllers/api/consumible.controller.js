@@ -6,12 +6,13 @@ const Unidad = db.Unidad
 const { v4: uuidv4 } = require('uuid')
 const auth = require('../../auth')
 
-router.get('/consumibles', auth.isLoggedIn, async (req, res) => {
+router.get('/consumibles', async (req, res) => {
 
     await Consumible.findAll({
-        attributes: ['idConsumible','nombre','codigo','detalle','existenciaInicial','existenciaActual', 'createdAt', 'updatedAt'],
+        attributes: ['idConsumible','nombre','codigo','detalle','existenciaInicial','existenciaActual', 'createdAt', 'updatedAt','idUnidad'],
         include: {
-            model: Unidad, as: 'Unidad'
+            model: Unidad, 
+            as: 'unidad'
         }
     })
         .then(data => {
