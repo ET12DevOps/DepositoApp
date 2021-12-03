@@ -1,13 +1,38 @@
 const url = window.location.protocol + "//" + window.location.host + "/";
 
-const id = document.getElementById('consumibleId')
+const id = document.getElementById('noconsumibleId')
 const nombre = document.getElementById('nombre')
 const codigo = document.getElementById('codigo')
 const detalle = document.getElementById('detalle')
 const existenciaInicial = document.getElementById('existenciaInicial')
 const existenciaActual = document.getElementById('existenciaActual')
 const enabled = document.getElementById('enabled')
-const saveConsumible = document.getElementById('save-noconsumible')
+const saveNoconsumible = document.getElementById('save-noconsumible')
+const unidades = document.getElementById("unidades")
+
+document.addEventListener('DOMContentLoaded', () => {
+  getUnidades()
+})
+
+const getUnidades = async () => {
+  try {
+    const response = await fetch(url + 'api/unidades')
+    const unidadesJson = await response.json()
+    console.log(unidadesJson)
+    var opcion = document.createElement('option');
+    opcion.value = 0;
+    opcion.innerHTML = '';
+    unidades.appendChild(opcion);
+    for (var i = 0; i < unidadesJson.length; i++){
+      var opcion = document.createElement('option');
+      opcion.value = unidadesJson[i].idUnidad;
+      opcion.innerHTML = unidadesJson[i].nombre;
+      unidades.appendChild(opcion);
+    }
+  } catch(error) {
+    console.error(error)
+  }
+}
 
 saveNoconsumible.addEventListener('click', postData)
 
@@ -22,12 +47,14 @@ function postData() {
         createdAt: '',
         createdBy: '',
         updatedAt: '',
-        updatedBy: ''
-            }
+        updatedBy: '',
+        idUnidad: parseInt(unidades.options[unidades.selectedIndex].value)
+    }
+
     
     console.log(data)
 
-    fetch(url + 'api/noconsumibles', {
+    fetch(url + 'api/noconsumibles',{
         method: 'POST', 
         body: JSON.stringify(data),
         headers:{
@@ -37,4 +64,6 @@ function postData() {
       .then(res => res.json())
       .catch(error => console.error('Error:', error))
       .then(response => console.log('Success:', response))
+      
+      window.location.href = url+'noconsumibles'
 }

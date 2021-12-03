@@ -24,9 +24,9 @@ document.addEventListener("DOMContentLoaded", function(){
     getData()
 });
 
-const saveNoConsumible = document.getElementById('save-noconsumibles')
+const saveNoconsumible = document.getElementById('save-noconsumibles')
 
-saveNoConsumible.addEventListener('click', putData)
+saveNoconsumible.addEventListener('click', putData)
 
 function putData() {
     var data = {
