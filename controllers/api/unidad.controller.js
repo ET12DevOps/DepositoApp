@@ -5,7 +5,7 @@ const Unidad = db.Unidad
 const auth = require('../../auth')
 
 //auth.isLoggedIn
-router.get('/unidades', async (req, res) => {
+router.get('/unidades', auth.isLoggedIn, async (req, res) => {
 
     await Unidad.findAll({
         attributes: ['idUnidad', 'nombre', 'referencia', 'createdAt', 'updatedAt']
