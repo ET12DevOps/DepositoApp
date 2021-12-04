@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       primaryKey: true,
       allowNull: false,
-      autoIncrement: true  
+      autoIncrement: true
     },
     codigo: {
       type: DataTypes.STRING,
@@ -25,12 +25,13 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING
     },
     idUnidad: {
-      type: DataTypes.INTEGER,      
+      type: DataTypes.INTEGER,
+      primaryKey: true,
       allowNull: false
     }
   }, {
-      freezeTableName: true
-  }); 
-  
+    freezeTableName: true
+  });
+
   return Consumible;
 };

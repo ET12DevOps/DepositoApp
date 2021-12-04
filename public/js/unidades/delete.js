@@ -4,16 +4,16 @@ const id = document.getElementById('idUnidad')
 const nombre = document.getElementById('nombre')
 const referencia = document.getElementById('referencia')
 
-const getData = async() => {
+const getData = async () => {
     console.log(id.value)
     const res = await fetch(url + 'api/unidades/' + id.value)
     const data = await res.json()
     console.log(data)
     nombre.value = data.nombre
-    referencia.value = data.referencia 
+    referencia.value = data.referencia
 }
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function () {
     getData()
 });
 
@@ -21,16 +21,17 @@ const saveUnidad = document.getElementById('save-unidades')
 
 saveUnidad.addEventListener('click', deleteData)
 
-function deleteData(){
+function deleteData() {
     console.log(id.value)
 
     fetch(url + 'api/unidades/' + id.value, {
         method: 'DELETE',
-        headers:{
+        headers: {
             'Content-Type': 'application/json'
-        }  
+        }
     })
-    .then(res => res.json())
-    .catch(error => console.error('Error:', error))
-    .then(response => console.log('Success:', response))
+        .then(res => res.json())
+        .catch(error => console.error('Error:', error))
+        .then(response => console.log('Success:', response))
+    window.location.href = url + 'unidades'
 }

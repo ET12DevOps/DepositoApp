@@ -8,26 +8,27 @@ const saveRole = document.getElementById('save-role')
 saveRole.addEventListener('click', postData)
 
 function postData() {
-    var data = {
-        id: '',
-        name: name.value,
-        enabled: enabled.checked,
-        createdAt: '',
-        createdBy: '',
-        updatedAt: '',
-        updatedBy: ''
-    }
-    
-    console.log(data)
+  var data = {
+    id: '',
+    name: name.value,
+    enabled: enabled.checked,
+    createdAt: '',
+    createdBy: '',
+    updatedAt: '',
+    updatedBy: ''
+  }
 
-    fetch(url + 'api/roles/', {
-        method: 'POST', 
-        body: JSON.stringify(data),
-        headers:{
-          'Content-Type': 'application/json'
-        }
-      })
-      .then(res => res.json())
-      .catch(error => console.error('Error:', error))
-      .then(response => console.log('Success:', response))
+  console.log(data)
+
+  fetch(url + 'api/roles/', {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(res => res.json())
+    .catch(error => console.error('Error:', error))
+    .then(response => console.log('Success:', response))
+  window.location.href = url + 'roles'
 }

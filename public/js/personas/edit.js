@@ -9,10 +9,10 @@ const estado = document.getElementById('enabled')
 const createdAt = document.getElementById('createdAt')
 const updatedAt = document.getElementById('updatedAt')
 
-const getData = async() => {
+const getData = async () => {
     const res = await fetch(url + 'api/personas/' + id.value)
     const data = await res.json()
-    
+
     nombre.value = data.nombre
     apellido.value = data.apellido
     dni.value = parseInt(data.dni)
@@ -20,7 +20,7 @@ const getData = async() => {
     enabled.checked = data.estado
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     getData()
 });
 
@@ -37,19 +37,20 @@ function putData() {
         email: email.value,
         estado: estado.checked,
         updatedAt: '',
-        updatedBy:'',
+        updatedBy: '',
     }
-    
+
     console.log(data)
 
     fetch(url + 'api/personas/' + id.value, {
-        method: 'PUT', 
+        method: 'PUT',
         body: JSON.stringify(data),
-        headers:{
-        'Content-Type': 'application/json'
+        headers: {
+            'Content-Type': 'application/json'
         }
     })
-    .then(res => res.json())
-    .catch(error => console.error('Error:', error))
-    .then(response => console.log('Success:', response))
+        .then(res => res.json())
+        .catch(error => console.error('Error:', error))
+        .then(response => console.log('Success:', response))
+    window.location.href = url + 'personas'
 }

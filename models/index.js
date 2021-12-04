@@ -68,27 +68,27 @@ db.Motivo.belongsToMany(db.Documento, {
 
 db.Motivo.hasMany(db.Prestamo, {
   foreignKey: "idMotivo"
-}); 
+});
 
 db.Persona.hasMany(db.Prestamo, {
   foreignKey: "idPersona"
 });
 
-db.Consumible.hasOne(db.Unidad,{
-  // through: "unidadConsumible",
-  // as: "UnidadConsumible",
-  // foreignKey: "idUnidad"
-})
-
-db.Unidad.belongsToMany(db.Consumible, {
-  through: "unidadConsumible",
-  as: "UnidadConsumible",
+db.Unidad.hasMany(db.Consumible, {
   foreignKey: "idUnidad"
 });
 
-db.Unidad.hasMany(db.NoConsumible,{
+db.Consumible.belongsTo(db.Unidad, {
+  foreignKey: 'idUnidad'
+})
+
+db.NoConsumible.belongsTo(db.Unidad, {
+  foreignKey: 'idUnidad'
+})
+
+db.Unidad.hasMany(db.NoConsumible, {
   foreignKey: "idUnidad"
-}); 
+});
 
 db.Consumible.belongsToMany(db.Prestamo, {
   through: "prestamoConsumible",
@@ -106,7 +106,7 @@ db.NoConsumible.belongsToMany(db.Prestamo, {
   through: "prestamoNoConsumible",
   as: "NoConsumiblesPrestamo",
   foreignKey: "idNoConsumible"
-}); 
+});
 
 db.Prestamo.belongsToMany(db.NoConsumible, {
   through: "prestamoNoConsumible",
