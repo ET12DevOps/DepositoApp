@@ -52,7 +52,6 @@ router.post('/users', async (req, res) => {
         return;
     }
 
-
     // Crear un usuario
     const newUser = {
         id: uuidv4(),
