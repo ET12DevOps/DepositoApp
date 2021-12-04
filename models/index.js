@@ -82,13 +82,13 @@ db.Consumible.belongsTo(db.Unidad, {
   foreignKey: 'idUnidad'
 })
 
-db.NoConsumible.belongsTo(db.Unidad, {
-  foreignKey: 'idUnidad'
-})
-
 db.Unidad.hasMany(db.NoConsumible, {
   foreignKey: "idUnidad"
 });
+
+db.NoConsumible.belongsTo(db.Unidad, {
+  foreignKey: 'idUnidad'
+})
 
 db.Consumible.belongsToMany(db.Prestamo, {
   through: "prestamoConsumible",
