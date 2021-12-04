@@ -10,9 +10,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     idNoConsumible: {
       type: DataTypes.INTEGER,
+      primaryKey: true,
+      allowNull: false
     },
     nroPrestamo: {
       type: DataTypes.INTEGER,
+      primaryKey: true,
+      allowNull: false
     },
     devuelto: {
       type: DataTypes.BOOLEAN
