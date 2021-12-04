@@ -16,7 +16,7 @@ const getData = async () => {
             searchable: true,
             paging: true,
             data: {
-                headings: ['codigo', 'numero','descripcion', 'createdAt', 'updatedAt', 'ACCIONES'],
+                headings: ['CODIGO', 'NUMERO', 'DESCRIPCION', 'createdAt', 'updatedAt', 'ACCIONES'],
                 data: userData.map((x) => {
                     var res = Object.values(x)
                     res.shift()

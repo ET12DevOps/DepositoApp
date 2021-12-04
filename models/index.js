@@ -53,6 +53,7 @@ db.PrestamoNoConsumible = require("./prestamo-no-consumible.model")(sequelize, S
 db.Prestamo = require("./prestamo.model")(sequelize, Sequelize);
 db.Unidad = require("./unidad.model")(sequelize, Sequelize);
 
+
 db.Documento.belongsToMany(db.Motivo, {
   through: "motivoDocumento",
   as: "DocumentoMotivo",
@@ -67,7 +68,7 @@ db.Motivo.belongsToMany(db.Documento, {
 
 db.Motivo.hasMany(db.Prestamo, {
   foreignKey: "idMotivo"
-}); 
+});
 
 db.Persona.hasMany(db.Prestamo, {
   foreignKey: "idPersona"
@@ -77,9 +78,17 @@ db.Unidad.hasMany(db.Consumible, {
   foreignKey: "idUnidad"
 });
 
-db.Unidad.hasMany(db.NoConsumible,{
+db.Consumible.belongsTo(db.Unidad, {
+  foreignKey: 'idUnidad'
+})
+
+db.NoConsumible.belongsTo(db.Unidad, {
+  foreignKey: 'idUnidad'
+})
+
+db.Unidad.hasMany(db.NoConsumible, {
   foreignKey: "idUnidad"
-}); 
+});
 
 db.Consumible.belongsToMany(db.Prestamo, {
   through: "prestamoConsumible",
@@ -97,7 +106,7 @@ db.NoConsumible.belongsToMany(db.Prestamo, {
   through: "prestamoNoConsumible",
   as: "NoConsumiblesPrestamo",
   foreignKey: "idNoConsumible"
-}); 
+});
 
 db.Prestamo.belongsToMany(db.NoConsumible, {
   through: "prestamoNoConsumible",

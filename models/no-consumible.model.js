@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     idUnidad: {
       type: DataTypes.INTEGER,
-      primaryKey: true,
+      forignKey: true,
       allowNull: false
     },
     existenciaInicial: {

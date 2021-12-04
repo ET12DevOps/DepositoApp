@@ -1,4 +1,6 @@
 const url = window.location.protocol + "//" + window.location.host + "/";
+const savaConsumible = document.getElementById('save-consumible')
+saveConsumible.addEventListener('click', deleteData)
 
 const id = document.getElementById('consumibleId')
 const nombre = document.getElementById('nombre')

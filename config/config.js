@@ -3,7 +3,7 @@ const fs = require('fs');
 module.exports = {
     development: {
         username: 'root',
-        password: 'root',
+        password: 'telesca1234',
         database: 'deposito',
         host: 'localhost',
         dialect: 'mysql'

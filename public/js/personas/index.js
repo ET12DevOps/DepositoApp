@@ -9,7 +9,7 @@ const getData = async () => {
         const response = await fetch(url + 'api/personas')
 
         const userData = await response.json()
-        
+
 
         let progresBar = document.getElementById("bar")
 
@@ -19,7 +19,7 @@ const getData = async () => {
             searchable: true,
             paging: true,
             data: {
-                headings: ['NOMBRE','APELLIDO','DNI','EMAIL','ESTADO','createdAt','updatedAt',"ACCIONES"],
+                headings: ['NOMBRE', 'APELLIDO', 'DNI', 'EMAIL', 'ESTADO', 'createdAt', 'updatedAt', "ACCIONES"],
                 data: userData.map((x) => {
                     var res = Object.values(x)
                     res.shift()
@@ -32,10 +32,17 @@ const getData = async () => {
                 { select: 1 },
                 { select: 2 },
                 { select: 3 },
-                { select: 4 },
-                { select: 5,hidden :true},
-                { select: 6, hidden:true},
-                
+                {
+                    select: 4, render: function (data, cell, row) {
+                        if (data === 'true')
+                            return `<span class="tag is-success is-light">Activo</span>`
+                        else
+                            return `<span class="tag is-danger is-light">Inactivo</span>`
+                    }
+                },
+                { select: 5, hidden: true },
+                { select: 6, hidden: true },
+
                 {
                     select: 7, sortable: false, render: function (data, cell, row) {
                         var editButton = `<a href="/personas/${userData[row.dataIndex].idPersona}/edit" id="edit-${userData[row.dataIndex].idPersona}" class="mr-2 has-text-info"><i class="fad fa-pencil"></i></a>`
