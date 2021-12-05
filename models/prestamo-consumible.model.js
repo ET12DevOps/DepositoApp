@@ -2,13 +2,13 @@
 
 module.exports = (sequelize, DataTypes) => {
   const PrestamoConsumible = sequelize.define('prestamoConsumible', {
-    idPrestamoConsumible: {
-      type: DataTypes.INTEGER,
-      // primaryKey: true,
-      // allowNull: false,
-      autoIncrement: true,
-      uniqueKey: true
-    },
+    // idPrestamoConsumible: {
+    //   type: DataTypes.INTEGER,
+    //   // primaryKey: true,
+    //   // allowNull: false,
+    //   autoIncrement: true,
+    //   uniqueKey: true
+    // },
     idConsumible: {
       type: DataTypes.INTEGER,
       primaryKey: true,
