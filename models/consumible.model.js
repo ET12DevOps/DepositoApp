@@ -26,9 +26,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING
     },
     idUnidad: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      allowNull: false
+      type: DataTypes.INTEGER
+      // primaryKey: true,
+      // allowNull: false
     }
   }, {
     freezeTableName: true
