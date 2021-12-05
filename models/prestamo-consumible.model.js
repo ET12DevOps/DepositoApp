@@ -9,16 +9,16 @@ module.exports = (sequelize, DataTypes) => {
     //   autoIncrement: true,
     //   uniqueKey: true
     // },
-    idConsumible: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      allowNull: false,
-    },
-    nroPrestamo: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      allowNull: false,
-    },
+    // idConsumible: {
+    //   type: DataTypes.INTEGER,
+    //   primaryKey: true,
+    //   allowNull: false,
+    // },
+    // nroPrestamo: {
+    //   type: DataTypes.INTEGER,
+    //   primaryKey: true,
+    //   allowNull: false,
+    // },
     devuelto: {
       type: DataTypes.BOOLEAN
     },
