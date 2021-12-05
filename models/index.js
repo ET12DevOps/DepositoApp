@@ -100,25 +100,25 @@ db.Prestamo.belongsToMany(db.Consumible, {
   foreignKey: "nroPrestamo"
 });
 
-// db.NoConsumible.belongsToMany(db.Prestamo, {
-//   through: "prestamoNoConsumible",
-//   as: "prestamos",
-//   foreignKey: "idNoConsumible"
-// });
+db.NoConsumible.belongsToMany(db.Prestamo, {
+  through: "prestamoNoConsumible",
+  as: "prestamos",
+  foreignKey: "idNoConsumible"
+});
 
-// db.Prestamo.belongsToMany(db.NoConsumible, {
-//   through: "prestamoNoConsumible",
-//   as: "noconsumibles",
-//   foreignKey: "nroPrestamo"
-// });
+db.Prestamo.belongsToMany(db.NoConsumible, {
+  through: "prestamoNoConsumible",
+  as: "noconsumibles",
+  foreignKey: "nroPrestamo"
+});
 
 db.PrestamoConsumible.hasMany(db.DevolucionConsumible, {
   foreignKey: "idPrestamoConsumible"
 });
 
-// db.PrestamoNoConsumible.hasMany(db.DevolucionNoConsumible, {
-//   foreignKey: "idPrestamoNoConsumible"
-// });
+db.PrestamoNoConsumible.hasMany(db.DevolucionNoConsumible, {
+  foreignKey: "idPrestamoNoConsumible"
+});
 
 //usuarios - roles -login
 
