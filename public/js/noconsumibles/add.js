@@ -38,6 +38,7 @@ saveNoconsumible.addEventListener('click', postData)
 
 function postData() { 
     var data = {
+      id: 0,
       nombre: nombre.value,
       codigo: codigo.value,
       detalle: detalle.value,
