@@ -49,9 +49,9 @@ const getData = async () => {
                 { select: 7, hidden: true },
                 {
                     select: 8, sortable: false, render: function (data, cell, row) {
-                        var editButton = `<a href="/consumibles/${userData[row.dataIndex].consumibleId}/edit" id="edit-${userData[row.dataIndex].consumibleId}" class="mr-2 has-text-info"><i class="fad fa-pencil"></i></a>`
+                        var editButton = `<a href="/consumibles/${userData[row.dataIndex].idConsumible}/edit" id="edit-${userData[row.dataIndex].idConsumible}" class="mr-2 has-text-info"><i class="fad fa-pencil"></i></a>`
 
-                        var deleteButton = `<a href="/consumibles/${userData[row.dataIndex].consumibleId}/delete" id="delete-${userData[row.dataIndex].consumibleId}" class="has-text-danger"><i class="fad fa-trash-alt"></i></a>`
+                        var deleteButton = `<a href="/consumibles/${userData[row.dataIndex].idConsumible}/delete" id="delete-${userData[row.dataIndex].idConsumible}" class="has-text-danger"><i class="fad fa-trash-alt"></i></a>`
 
                         return '<div class="has-text-centered"> ' + editButton + deleteButton + '</div>';
                     }

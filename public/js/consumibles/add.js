@@ -66,5 +66,5 @@ function postData() {
       .catch(error => console.error('Error:', error))
       .then(response => console.log('Success:', response))
 
-      window.location.ref= url + '/Consumibles'
+      window.location.href = url+'consumibles'
 }

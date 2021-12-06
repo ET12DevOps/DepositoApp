@@ -32,6 +32,7 @@ router.get('/consumibles/:id', auth.isLoggedIn, async (req, res) => {
 
     await Consumible.findByPk(id)
         .then(data => {
+            console.log(data)
             res.send(data);
         })
         .catch(err => {
