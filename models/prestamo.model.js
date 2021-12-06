@@ -2,9 +2,10 @@
 
 module.exports = (sequelize, DataTypes) => {
   const Prestamo = sequelize.define('prestamo', {
-    numPrestamo: {
+    nroPrestamo: {
       type: DataTypes.INTEGER,
       primaryKey: true,
+      unique: true,
       allowNull: false,
       autoIncrement: true
     },

@@ -5,8 +5,9 @@ module.exports = (sequelize, DataTypes) => {
     idConsumible: {
       type: DataTypes.INTEGER,
       primaryKey: true,
+      unique: true,
       allowNull: false,
-      autoIncrement: true  
+      autoIncrement: true
     },
     codigo: {
       type: DataTypes.STRING,
@@ -30,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     }
   }, {
-      freezeTableName: true
+    freezeTableName: true
   });
 
   return Consumible;

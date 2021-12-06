@@ -14,4 +14,5 @@ function deleteData() {
         })
         .catch(error => console.error('Error:', error))
         .then(response => console.log('Success:', response))
+    window.location.href = url + 'users'
 }

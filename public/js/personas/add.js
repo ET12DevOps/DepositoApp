@@ -11,29 +11,30 @@ const savePersona = document.getElementById('save-persona')
 savePersona.addEventListener('click', postData)
 
 function postData() {
-    var data = {
-        idPersona: 0,
-        nombre: nombre.value,
-        apellido: apellido.value,
-        dni: parseInt(dni.value),
-        email: email.value,
-        estado: estado.checked,
-        createdAt: '',
-        createdBy: '',
-        updatedAt: '',
-        updatedBy: ''
-    } 
+  var data = {
+    idPersona: 0,
+    nombre: nombre.value,
+    apellido: apellido.value,
+    dni: parseInt(dni.value),
+    email: email.value,
+    estado: estado.checked,
+    createdAt: '',
+    createdBy: '',
+    updatedAt: '',
+    updatedBy: ''
+  }
 
-    console.log(data)
+  console.log(data)
 
-    fetch(url + 'api/personas', {
-        method: 'POST', 
-        body: JSON.stringify(data),
-        headers:{
-          'Content-Type': 'application/json'
-        }
-      })
-      .then(res => res.json())
-      .catch(error => console.error('Error:', error))
-      .then(response => console.log('Success:', response))
+  fetch(url + 'api/personas', {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(res => res.json())
+    .catch(error => console.error('Error:', error))
+    .then(response => console.log('Success:', response))
+  window.location.href = url + 'personas'
 }
