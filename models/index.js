@@ -75,16 +75,6 @@ db.Persona.hasMany(db.Prestamo, {
 db.Unidad.hasMany(db.Consumible, {
   foreignKey: "idUnidad"
 });
-db.NoConsumible.hasOne(db.Unidad,{
-  through:"unidad.Noconsumible",
-  as:"UnidadNoconsumible",
-  foreignKey:"idUnidad"
-})
-db.NoConsumible.belongsToMany(db.Unidad,{
-  through:"unidad.Noconsumible",
-  as:"UnidadNoconsumible",
-  foreignKey:"idUnidad"
-})
 
 db.Consumible.belongsTo(db.Unidad, {
   foreignKey: 'idUnidad'
