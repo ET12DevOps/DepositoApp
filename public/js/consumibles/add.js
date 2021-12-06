@@ -1,13 +1,13 @@
 const url = window.location.protocol + "//" + window.location.host + "/";
 
-const id = document.getElementById('noconsumibleId')
+const id = document.getElementById('consumibleId')
 const nombre = document.getElementById('nombre')
 const codigo = document.getElementById('codigo')
 const detalle = document.getElementById('detalle')
 const existenciaInicial = document.getElementById('existenciaInicial')
 const existenciaActual = document.getElementById('existenciaActual')
 const enabled = document.getElementById('enabled')
-const saveConsumible = document.getElementById('save-noconsumible')
+const saveConsumible = document.getElementById('save-consumible')
 
 saveConsumible.addEventListener('click', postData)
 
