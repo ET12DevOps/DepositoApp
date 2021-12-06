@@ -1,4 +1,4 @@
-saveNoConsumible.addEventListener('click', deleteData)
+saveNoconsumible.addEventListener('click', deleteData)
 
 function deleteData(){
     console.log(id.value)
