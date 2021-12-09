@@ -9,7 +9,7 @@ const getData = async () => {
         const response = await fetch(url + 'api/consumibles')
 
         const userData = await response.json()
-
+        console.log(userData)
         let progresBar = document.getElementById("bar")
 
         progresBar.style.display = "none"
@@ -18,7 +18,7 @@ const getData = async () => {
             searchable: true,
             paging: true,
             data: {
-                headings: ['NOMBRE', 'ESTADO', 'CODIGO', 'NUMERO','DESCRIPCION', 'ACCIONES'],
+                headings: ['CODIGO', 'NOMBRE', 'DETALLE', 'EXISTENCIA INICIAL', 'EXISTENCIA ACTUAL', 'UNIDAD', 'createdtAt', 'updatedAt', 'ACCIONES'],
                 data: userData.map((x) => {
                     var res = Object.values(x)
                     res.shift()
@@ -27,30 +27,31 @@ const getData = async () => {
                 })
             },
             columns: [
-                { select: 0 },
                 {
-                    select: 1, render: function (data, cell, row) {
-                        if (data === 'true')
-                            return `<span class="tag is-success is-light">Activo</span>`
-                        else
-                            return `<span class="tag is-danger is-light">Inactivo</span>`
+                    select: 0, render: (data, cell, row) => {
+                        return userData[row.dataIndex].codigo
                     }
                 },
                 {
-                    select: 2, type: "date", render: function (data, cell, row) {
-                        return new Date(data).toLocaleString('es-AR')
+                    select: 1, render: (data, cell, row) => {
+                        return userData[row.dataIndex].nombre
                     }
                 },
+                { select: 2, hidden: true },
+                { select: 3 },
+                { select: 4 },
                 {
-                    select: 3, render: function (data, cell, row) {
-                        return new Date(data).toLocaleString('es-AR')
+                    select: 5, render: (data, cell, row) => {
+                        return userData[row.dataIndex].unidad.nombre
                     }
                 },
+                { select: 6, hidden: true },
+                { select: 7, hidden: true },
                 {
-                    select: 4, sortable: false, render: function (data, cell, row) {
-                        var editButton = `<a href="/consumibles/${userData[row.dataIndex].id}/edit" id="edit-${userData[row.dataIndex].id}" class="mr-2 has-text-info"><i class="fad fa-pencil"></i></a>`
+                    select: 8, sortable: false, render: function (data, cell, row) {
+                        var editButton = `<a href="/consumibles/${userData[row.dataIndex].consumibleId}/edit" id="edit-${userData[row.dataIndex].consumibleId}" class="mr-2 has-text-info"><i class="fad fa-pencil"></i></a>`
 
-                        var deleteButton = `<a href="/consumibles/${userData[row.dataIndex].id}/delete" id="delete-${userData[row.dataIndex].id}" class="has-text-danger"><i class="fad fa-trash-alt"></i></a>`
+                        var deleteButton = `<a href="/consumibles/${userData[row.dataIndex].consumibleId}/delete" id="delete-${userData[row.dataIndex].consumibleId}" class="has-text-danger"><i class="fad fa-trash-alt"></i></a>`
 
                         return '<div class="has-text-centered"> ' + editButton + deleteButton + '</div>';
                     }

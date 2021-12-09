@@ -1,22 +1,19 @@
 const url = window.location.protocol + "//" + window.location.host + "/";
 
-const id = document.getElementById('unidadId')
-const name = document.getElementById('name')
-const enabled = document.getElementById('enabled')
-const createdAt = document.getElementById('createdAt')
-const updatedAt = document.getElementById('updatedAt')
+const id = document.getElementById('idUnidad')
+const nombre = document.getElementById('nombre')
+const referencia = document.getElementById('referencia')
 
-const getData = async() => {
+const getData = async () => {
+    console.log(id.value)
     const res = await fetch(url + 'api/unidades/' + id.value)
     const data = await res.json()
-    
-    name.value = data.name
-    enabled.checked = data.enabled 
-    createdAt.value = new Date(data.createdAt).toLocaleString('es-AR')
-    updatedAt.value =  new Date(data.updatedAt).toLocaleString('es-AR')
+    console.log(data)
+    nombre.value = data.nombre
+    referencia.value = data.referencia
 }
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function () {
     getData()
 });
 
@@ -27,22 +24,23 @@ saveUnidad.addEventListener('click', putData)
 function putData() {
     var data = {
         id: id.value,
-        name: name.value,
-        enabled: enabled.checked,
+        nombre: nombre.value,
+        referencia: referencia.value,
         updatedAt: '',
         updatedBy: ''
     }
-    
+
     console.log(data)
 
     fetch(url + 'api/unidades/' + id.value, {
-        method: 'PUT', 
+        method: 'PUT',
         body: JSON.stringify(data),
-        headers:{
-          'Content-Type': 'application/json'
+        headers: {
+            'Content-Type': 'application/json'
         }
-      })
-      .then(res => res.json())
-      .catch(error => console.error('Error:', error))
-      .then(response => console.log('Success:', response))
+    })
+        .then(res => res.json())
+        .catch(error => console.error('Error:', error))
+        .then(response => console.log('Success:', response))
+    window.location.href = url + 'unidades'
 }

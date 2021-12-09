@@ -7,9 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const getData = async () => {
     try {
         const response = await fetch(url + 'api/documentos')
-
         const userData = await response.json()
-
         let progresBar = document.getElementById("bar")
 
         progresBar.style.display = "none"
@@ -18,7 +16,7 @@ const getData = async () => {
             searchable: true,
             paging: true,
             data: {
-                headings: ['NOMBRE', 'ESTADO', 'CODIGO', 'NUMERO','DESCRIPCION', 'ACCIONES'],
+                headings: ['CODIGO', 'NUMERO', 'DESCRIPCION', 'createdAt', 'updatedAt', 'ACCIONES'],
                 data: userData.map((x) => {
                     var res = Object.values(x)
                     res.shift()
@@ -28,29 +26,15 @@ const getData = async () => {
             },
             columns: [
                 { select: 0 },
+                { select: 1 },
+                { select: 2 },
+                { select: 3, hidden: true },
+                { select: 4, hidden: true },
                 {
-                    select: 1, render: function (data, cell, row) {
-                        if (data === 'true')
-                            return `<span class="tag is-success is-light">Activo</span>`
-                        else
-                            return `<span class="tag is-danger is-light">Inactivo</span>`
-                    }
-                },
-                {
-                    select: 2, type: "date", render: function (data, cell, row) {
-                        return new Date(data).toLocaleString('es-AR')
-                    }
-                },
-                {
-                    select: 3, render: function (data, cell, row) {
-                        return new Date(data).toLocaleString('es-AR')
-                    }
-                },
-                {
-                    select: 4, sortable: false, render: function (data, cell, row) {
-                        var editButton = `<a href="/documentos/${userData[row.dataIndex].id}/edit" id="edit-${userData[row.dataIndex].id}" class="mr-2 has-text-info"><i class="fad fa-pencil"></i></a>`
+                    select: 5, sortable: false, render: function (data, cell, row) {
+                        var editButton = `<a href="/documentos/${userData[row.dataIndex].idDocumento}/edit" id="edit-${userData[row.dataIndex].idDocumento}" class="mr-2 has-text-info"><i class="fad fa-pencil"></i></a>`
 
-                        var deleteButton = `<a href="/documentos/${userData[row.dataIndex].id}/delete" id="delete-${userData[row.dataIndex].id}" class="has-text-danger"><i class="fad fa-trash-alt"></i></a>`
+                        var deleteButton = `<a href="/documentos/${userData[row.dataIndex].idDocumento}/delete" id="delete-${userData[row.dataIndex].idDocumento}" class="has-text-danger"><i class="fad fa-trash-alt"></i></a>`
 
                         return '<div class="has-text-centered"> ' + editButton + deleteButton + '</div>';
                     }
