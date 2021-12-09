@@ -1,14 +1,19 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../../models')
-const Consumible = db.Consumible
+const Noconsumible = db.Noconsumible
+const Unidad = db.Unidad
 const { v4: uuidv4 } = require('uuid')
 const auth = require('../../auth')
 
 router.get('/noconsumibles', auth.isLoggedIn, async (req, res) => {
 
-    await Consumible.findAll({
-        attributes: ['idNoconsumible','nombre','codigo','detalle','existenciaInicial','existenciaActual','IdUnidad', 'createdAt', 'updatedAt']
+    await Noconsumible.findAll({
+        attributes: ['idNoconsumible', 'nombre', 'codigo', 'detalle', 'existenciaInicial', 'existenciaActual', 'createdAt', 'updatedAt'],
+        include: [{
+            model: Unidad,
+            as: 'unidad'
+        }]
     })
         .then(data => {
             res.send(data);
@@ -27,6 +32,7 @@ router.get('/noconsumibles/:id', auth.isLoggedIn, async (req, res) => {
 
     await Noconsumible.findByPk(id)
         .then(data => {
+            console.log(data)
             res.send(data);
         })
         .catch(err => {
@@ -47,7 +53,7 @@ router.post('/noconsumibles', auth.isLoggedIn, async (req, res) => {
     }
 
     // Crear un no consumible
-    const Noconsumible = {
+    const noconsumible = {
         id: 0,
 
         nombre: req.body.nombre,
@@ -58,7 +64,9 @@ router.post('/noconsumibles', auth.isLoggedIn, async (req, res) => {
         createAt: Date.now(),
         createdBy: '',
         updatedAt: Date.now(),
-        updatedBy: ''
+        updatedBy: '',
+        idUnidad: req.body.idUnidad
+
     };
 
     // Guardo el rol en la base de datos
@@ -69,7 +77,7 @@ router.post('/noconsumibles', auth.isLoggedIn, async (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the Consumibles."
+                    err.message || "Some error occurred while creating the Noconsumibles."
             });
         });
 })
@@ -79,7 +87,7 @@ router.put('/noconsumibles/:id', auth.isLoggedIn, async (req, res) => {
 
     req.body.updatedAt = Date.now()
 
-    //actualizo la informacion del objeto consumible
+    //actualizo la informacion del objeto no consumible
     Noconsumible.update(req.body, {
         where: { id: id }
     })

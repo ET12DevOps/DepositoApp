@@ -12,7 +12,7 @@ router.get('/noconsumibles', auth.isLoggedIn, (req, res) => {
 router.get('/noconsumibles/:id/edit', auth.isLoggedIn, (req, res) => {
     res.render('./noconsumibles/edit', {
         title: "No consumibles",
-        consumibleId: req.params.id,
+        noconsumibleId: req.params.id,
         user: req.user
     })
 })
@@ -20,7 +20,7 @@ router.get('/noconsumibles/:id/edit', auth.isLoggedIn, (req, res) => {
 router.get('/noconsumibles/:id/delete', auth.isLoggedIn, (req, res) => {
     res.render('./noconsumibles/delete', { 
         title: "No consumibles",
-        consumibleId: req.params.id,
+        noconsumibleId: req.params.id,
         user: req.user 
     })
 })
