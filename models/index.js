@@ -140,4 +140,3 @@ db.Role.belongsToMany(db.User, {
 
 
 module.exports = db;
-

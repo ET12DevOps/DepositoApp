@@ -4,14 +4,14 @@ module.exports = (sequelize, DataTypes) => {
   const PrestamoConsumible = sequelize.define('prestamoConsumible', {
     idPrestamoConsumible: {
       type: DataTypes.INTEGER,
-      primaryKey:true,
-      allowNull:false,
-      autoIncrement: true
-    },    
+      primaryKey: true,
+      allowNull: false,
+      autoIncrement: true,
+    },
     idConsumible: {
       type: DataTypes.INTEGER,
     },
-    numPrestamo: {
+    nroPrestamo: {
       type: DataTypes.INTEGER,
     },
     devuelto: {

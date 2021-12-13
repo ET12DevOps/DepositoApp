@@ -32,6 +32,7 @@ router.get('/consumibles/:id', auth.isLoggedIn, async (req, res) => {
 
     await Consumible.findByPk(id)
         .then(data => {
+            console.log(data)
             res.send(data);
         })
         .catch(err => {
@@ -83,12 +84,26 @@ router.post('/consumibles', auth.isLoggedIn, async (req, res) => {
 
 router.put('/consumibles/:id', auth.isLoggedIn, async (req, res) => {
     const id = req.params.id;
+console.log(id)
+const consumible = {
+    id: 0,
 
-    req.body.updatedAt = Date.now()
+    nombre: req.body.nombre,
+    codigo: req.body.codigo,
+    detalle: req.body.detalle,
+    existenciaInicial: req.body.existenciaInicial,
+    existenciaActual: req.body.existenciaActual,
+    createAt: Date.now(),
+    createdBy: '',
+    updatedAt: Date.now(),
+    updatedBy: '',
+    idUnidad: req.body.idUnidad
 
+};
+console.log(consumible)
     //actualizo la informacion del objeto consumible
-    Consumible.update(req.body, {
-        where: { id: id }
+    Consumible.update(consumible, {
+        where: { idConsumible : id }
     })
         .then(num => {
             if (num == 1) {
@@ -103,7 +118,8 @@ router.put('/consumibles/:id', auth.isLoggedIn, async (req, res) => {
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error updating Role with id=" + id
+                message: "Error updating Role with id=" + id,
+                error: err
             });
         });
 })
@@ -113,7 +129,7 @@ router.delete('/consumibles/:id', auth.isLoggedIn, async (req, res) => {
     const id = req.params.id;
 
     Consumible.destroy({
-        where: { id: id }
+        where: { idConsumible : id }
     })
         .then(num => {
             if (num == 1) {

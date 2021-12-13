@@ -2,32 +2,32 @@ const express = require('express')
 const router = express.Router()
 const auth = require('../auth')
 
-router.get('/noconsumible', auth.isLoggedIn, (req, res) => {
-    res.render('./noconsumible/index', { 
-        title: "No consumible",
+router.get('/noconsumibles', auth.isLoggedIn, (req, res) => {
+    res.render('./consumibles/index', { 
+        title: "No consumibles",
+        user: req.user  
+    })
+})
+
+router.get('/noconsumibles/:id/edit', auth.isLoggedIn, (req, res) => {
+    res.render('./noconsumibles/edit', {
+        title: "No consumibles",
+        consumibleId: req.params.id,
         user: req.user
     })
 })
 
-router.get('/noconsumible/:id/edit', auth.isLoggedIn, (req, res) => {
-    res.render('./noconsumible/edit', { 
-        title: "No consumible",
-        noconsumibleId: req.params.id,
-        user: req.user
-    })
-})
-
-router.get('/noconsumible/:id/delete', auth.isLoggedIn, (req, res) => {
-    res.render('./noconsumible/delete', { 
-        title: "No consumible",
-        noconsumibleId: req.params.id,
+router.get('/noconsumibles/:id/delete', auth.isLoggedIn, (req, res) => {
+    res.render('./noconsumibles/delete', { 
+        title: "No consumibles",
+        consumibleId: req.params.id,
         user: req.user 
     })
 })
 
-router.get('/noconsumible/add', auth.isLoggedIn, (req, res) => {
-    res.render('./noconsumible/add', { 
-        title: "No consumible",
+router.get('/noconsumibles/add', auth.isLoggedIn, (req, res) => {
+    res.render('./noconsumibles/add', { 
+        title: "No consumibles",
         user: req.user       
     })
 })

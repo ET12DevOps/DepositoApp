@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     idConsumible: {
       type: DataTypes.INTEGER,
       primaryKey: true,
+      unique: true,
       allowNull: false,
       autoIncrement: true
     },

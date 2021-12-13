@@ -1,11 +1,12 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  const NoConsumible = sequelize.define('noConsumible', {
-    idNoConsumible: {
+  const Noconsumible = sequelize.define('noconsumible', {
+    idNoconsumible: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       allowNull: false,
+      unique: true,
       autoIncrement: true
     },
     codigo: {
@@ -15,23 +16,24 @@ module.exports = (sequelize, DataTypes) => {
     nombre: {
       type: DataTypes.STRING
     },
-    detalle: {
-      type: DataTypes.STRING
-    },
-    idUnidad: {
-      type: DataTypes.INTEGER,
-      forignKey: true,
-      allowNull: false
-    },
     existenciaInicial: {
       type: DataTypes.INTEGER
     },
     existenciaActual: {
       type: DataTypes.INTEGER
+    },
+    detalle: {
+      type: DataTypes.STRING
+    },
+    idUnidad: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      allowNull: false
     }
   }, {
-    freezeTableName: true
+      freezeTableName: true
   });
 
-  return NoConsumible;
+  return Noconsumible;
 };
+
