@@ -42,7 +42,7 @@ router.get('/noconsumibles/:id', auth.isLoggedIn, async (req, res) => {
         });
 })
 
-router.post('/noconsumibles', auth.isLoggedIn, async (req, res) => {
+router.post('/consumibles', auth.isLoggedIn, async (req, res) => {
 
     // Validar el request (si no es vacio el nombre)
     if (!req.body.nombre) {
@@ -77,19 +77,33 @@ router.post('/noconsumibles', auth.isLoggedIn, async (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the Noconsumibles."
+                    err.message || "Some error occurred while creating the No consumibles."
             });
         });
 })
 
 router.put('/noconsumibles/:id', auth.isLoggedIn, async (req, res) => {
     const id = req.params.id;
+console.log(id)
+const noconsumible = {
+    id: 0,
 
-    req.body.updatedAt = Date.now()
+    nombre: req.body.nombre,
+    codigo: req.body.codigo,
+    detalle: req.body.detalle,
+    existenciaInicial: req.body.existenciaInicial,
+    existenciaActual: req.body.existenciaActual,
+    createAt: Date.now(),
+    createdBy: '',
+    updatedAt: Date.now(),
+    updatedBy: '',
+    idUnidad: req.body.idUnidad
 
+};
+console.log(noconsumible)
     //actualizo la informacion del objeto no consumible
-    Noconsumible.update(req.body, {
-        where: { id: id }
+    Noconsumible.update(noconsumible, {
+        where: { idNoconsumible : id }
     })
         .then(num => {
             if (num == 1) {
@@ -104,7 +118,8 @@ router.put('/noconsumibles/:id', auth.isLoggedIn, async (req, res) => {
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error updating Role with id=" + id
+                message: "Error updating Role with id=" + id,
+                error: err
             });
         });
 })
@@ -114,7 +129,7 @@ router.delete('/noconsumibles/:id', auth.isLoggedIn, async (req, res) => {
     const id = req.params.id;
 
     Noconsumible.destroy({
-        where: { id: id }
+        where: { idConsumible : id }
     })
         .then(num => {
             if (num == 1) {

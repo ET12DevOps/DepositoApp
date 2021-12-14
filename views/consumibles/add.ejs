@@ -8,11 +8,10 @@
 <body>
 
     <header>
-        <%- include('../partials/header'); %>
+        <%- include('../partials/header'); %> 
     </header>
 
     <section>
-
         <div class="container is-fluid">
             <div>
                 <h1 class="title is-2 mt-4">
@@ -22,63 +21,62 @@
 
             <div class="my-6">
                 <div class="field">
-                    <label class="label">NOMBRE</label>
+                    <label class="label">IDENTIFICADOR</label>
                     <div class="control">
-                        <input class="input" type="text" name="NOMBRE" id="name">
-                    </div>
-                </div>
-            </div>
-            <div class="my-6">
-                <div class="field">
-                    <label class="label">CODIGO</label>
-                    <div class="control">
-                        <input class="input" type="text" name="CODIGO" id="name">
+                        <input class="input" type="text" value="<%= consumibleId %>" name="consumibleId" id="consumibleId" disabled>
                     </div>
                 </div>
                 <div class="my-6">
                     <div class="field">
-                        <label class="label">DETALLE</label>
+                        <label class="label">NOMBRE</label>
                         <div class="control">
-                            <input class="input" type="text" name="DETALLE" id="name">
+                            <input class="input" type="text"  id="nombre">
                         </div>
                     </div>
-                    <div class="my-6">
-                        <div class="field">
-                            <label class="label">EXISTENCIA INICIAL</label>
-                            <div class="control">
-                                <input class="input" type="number" name="EXISTENCIA INICIAL" id="name">
-                            </div>
+                    <div class="field">
+                        <label class="label">CODIGO</label>
+                        <div class="control">
+                            <input class="input" type="text"  id="codigo">
                         </div>
-                        <div class="my-6">
-                            <div class="field">
-                                <label class="label">EXISTENCIA ACTUAL</label>
-                                <div class="control">
-                                    <input class="input" type="number" name="EXISTENCIA ACTUAL" id="name">
-                                </div>
-                            </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">DETALLE</label>
+                        <div class="control">
+                            <input class="input" type="text"  id="detalle">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">EXISTENCIA INICIAL</label>
+                        <div class="control">
+                            <input class="input" type="text"  id="existenciaInicial">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">EXISTENCIA ACTUAL</label>
+                        <div class="control">
+                            <input class="input" type="text" id="existenciaActual">
+                        </div>
+                    </div>
                     <div class="field">
                         <div class="my-6">
                             <div class="field">
                                 <label class="label">UNIDADES</label>
-                        <input id="enabled" type="checkbox" name="enabled" class="switch is-outlined is-info is-rtl">
+                        <input id="enabled" type="checkbox" name="Unidad" class="switch is-outlined is-info is-rtl">
                         <div class="select">
-                            <select>
-                            <option value="1">Metros</option>
-                            <option value="2">Centimetros</option>
-                            <option value="3">Milimetro</option>
-                            <option value="4">Litro</option>
-                            <option value="5">Metrocuadrado</option>
-                            <option value="6">Unidad</option>
-                            <option value="7">Kilogramo</option>
+                            <select id="unidades">
                             </select>
-                        </div>
+                          </div>
                     </div>
                     
-                    <button id="save-consumible" type="submit" class="button is-outlined is-primary">Guardar</button>
+                <div class="mt-6">
+                    <h3 class="subtitle is-5">¿Desea eliminar el rol?</h3>
+                    <button id="save-consumible" type="submit" class="button is-outlined is-danger">Eliminar</button>
                     <a class="button is-outlined" href="/consumibles">Cancelar</a>
+                </div>
+            </div>
         </div>
     </section>
-    <script src="../public/js/consumibles/add.js"></script>
+    <script src="../../public/js/consumibles/delete.js"></script>
 </body>
 
 </html>

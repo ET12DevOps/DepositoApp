@@ -77,3 +77,4 @@ const getData = async () => {
         console.error(error)
     }
 }
+

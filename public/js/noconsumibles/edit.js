@@ -55,12 +55,13 @@ saveNoconsumible.addEventListener('click', putData)
 
 function putData() {
     var data = {
-        id: id.value,
+        idNoconsumible: parseInt(id.value),
         nombre: nombre.value,
         codigo: codigo.value,
         detalle: detalle.value,
-        existenciaInicial: existenciaInicial.value,
-        existenciaActual: existenciaActual.value,
+        existenciaInicial: parseInt(existenciaInicial.value),
+        existenciaActual: parseInt(existenciaActual.value),
+        idUnidad: parseInt(unidades.options[unidades.selectedIndex].value),
           createdAt: '',
           createdBy: '',
           updatedAt: '',
