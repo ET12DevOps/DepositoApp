@@ -39,6 +39,7 @@ db.User = require("./user.model.js")(sequelize, Sequelize);
 db.Role = require("./role.model.js")(sequelize, Sequelize);
 db.Login = require("./login.model.js")(sequelize, Sequelize);
 db.UserRole = require("./userRole.model.js")(sequelize, Sequelize);
+
 db.Consumible = require("./consumible.model")(sequelize, Sequelize);
 db.DevolucionConsumible = require("./devolucion-consumible.model")(sequelize, Sequelize);
 db.DevolucionNoConsumible = require("./devolucion-no-consumible.model")(sequelize, Sequelize);
@@ -52,15 +53,16 @@ db.PrestamoNoConsumible = require("./prestamo-no-consumible.model")(sequelize, S
 db.Prestamo = require("./prestamo.model")(sequelize, Sequelize);
 db.Unidad = require("./unidad.model")(sequelize, Sequelize);
 
+
 db.Documento.belongsToMany(db.Motivo, {
   through: "motivoDocumento",
-  as: "motivos",
+  as: "DocumentoMotivo",
   foreignKey: "idDocumento"
 });
 
 db.Motivo.belongsToMany(db.Documento, {
   through: "motivoDocumento",
-  as: "documentos",
+  as: "DocumentoMotivo",
   foreignKey: "idMotivo"
 });
 
@@ -75,18 +77,12 @@ db.Persona.hasMany(db.Prestamo, {
 db.Unidad.hasMany(db.Consumible, {
   foreignKey: "idUnidad"
 });
-db.NoConsumible.hasOne(db.Unidad,{
-  through:"unidad.Noconsumible",
-  as:"UnidadNoconsumible",
-  foreignKey:"idUnidad"
-})
-db.NoConsumible.belongsToMany(db.Unidad,{
-  through:"unidad.Noconsumible",
-  as:"UnidadNoconsumible",
-  foreignKey:"idUnidad"
-})
 
 db.Consumible.belongsTo(db.Unidad, {
+  foreignKey: 'idUnidad'
+})
+
+db.NoConsumible.belongsTo(db.Unidad, {
   foreignKey: 'idUnidad'
 })
 
@@ -94,32 +90,28 @@ db.Unidad.hasMany(db.NoConsumible, {
   foreignKey: "idUnidad"
 });
 
-db.NoConsumible.belongsTo(db.Unidad, {
-  foreignKey: "idUnidad"
-})
-
 db.Consumible.belongsToMany(db.Prestamo, {
-  through: db.PrestamoConsumible,
-  as: "prestamos",
+  through: "prestamoConsumible",
+  as: "PrestamosConsumible",
   foreignKey: "idConsumible"
 });
 
 db.Prestamo.belongsToMany(db.Consumible, {
-  through: db.PrestamoConsumible,
-  as: "consumibles",
-  foreignKey: "nroPrestamo"
+  through: "prestamoConsumible",
+  as: "ConsumiblesPrestamo",
+  foreignKey: "numPrestamo"
 });
 
 db.NoConsumible.belongsToMany(db.Prestamo, {
   through: "prestamoNoConsumible",
-  as: "prestamos",
+  as: "NoConsumiblesPrestamo",
   foreignKey: "idNoConsumible"
 });
 
 db.Prestamo.belongsToMany(db.NoConsumible, {
   through: "prestamoNoConsumible",
-  as: "noconsumibles",
-  foreignKey: "nroPrestamo"
+  as: "NoConsumiblePrestamos",
+  foreignKey: "numPrestamo"
 });
 
 db.PrestamoConsumible.hasMany(db.DevolucionConsumible, {
@@ -129,8 +121,6 @@ db.PrestamoConsumible.hasMany(db.DevolucionConsumible, {
 db.PrestamoNoConsumible.hasMany(db.DevolucionNoConsumible, {
   foreignKey: "idPrestamoNoConsumible"
 });
-
-//usuarios - roles -login
 
 db.Login.belongsTo(db.User, {
   foreignKey: "userId"
@@ -148,5 +138,5 @@ db.Role.belongsToMany(db.User, {
   foreignKey: "roleId"
 })
 
-module.exports = db;
 
+module.exports = db;

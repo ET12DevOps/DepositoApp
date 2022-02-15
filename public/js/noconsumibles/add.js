@@ -38,6 +38,7 @@ saveNoconsumible.addEventListener('click', postData)
 
 function postData() { 
     var data = {
+      id: 0,
       nombre: nombre.value,
       codigo: codigo.value,
       detalle: detalle.value,
@@ -50,7 +51,7 @@ function postData() {
         updatedBy: '',
         idUnidad: parseInt(unidades.options[unidades.selectedIndex].value)
     }
-
+    
     
     console.log(data)
 
@@ -64,6 +65,6 @@ function postData() {
       .then(res => res.json())
       .catch(error => console.error('Error:', error))
       .then(response => console.log('Success:', response))
-      
+
       window.location.href = url+'noconsumibles'
 }
